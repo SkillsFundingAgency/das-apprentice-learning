@@ -1,0 +1,9 @@
+﻿
+$govuk-global-styles: true;
+$govuk-fonts-path: "../govuk-assets/fonts/";
+
+@import "all";
+
+body {
+    background : red;
+}

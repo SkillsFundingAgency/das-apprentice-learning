@@ -1,0 +1,25 @@
+{
+  "name": "das-capture-the-flag",
+  "version": "1.0.0",
+  "description": "package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ben1stone/das-capture-the-flag.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ben1stone/das-capture-the-flag/issues"
+  },
+  "homepage": "https://github.com/ben1stone/das-capture-the-flag#readme",
+  "dependencies": {
+    "govuk-frontend": "^3.5.0",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-sass": "^4.0.2"
+  }
+}

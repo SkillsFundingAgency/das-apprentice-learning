@@ -1,0 +1,9 @@
+﻿.main-board {
+    display: flex;
+    flex-direction :column;
+}
+
+.tile-row {
+    display: flex;
+    flex-direction : row;
+}

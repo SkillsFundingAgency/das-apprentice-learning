@@ -1,0 +1,9 @@
+﻿.player {
+    background-image : url("../../Assets/Soldiers/player.png");
+    position: absolute; 
+    width:48px;
+    height:48px;
+    background-color: yellow;
+    left : 0px;
+    top: 100px;
+}
