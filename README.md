@@ -22,7 +22,7 @@ The repository can be found here: https://github.com/SkillsFundingAgency/das-app
 
 ## Built With
 1.   Framework .NET Core 3.1 
-2.   Architecture MVC
+2.   Architecture MVC 
 
 ## Contributing
 Please read [CONTRIBUTING.md]() for details on our code of conduct, and the process for submitting pull requests to us.
