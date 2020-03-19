@@ -1,0 +1,9 @@
+
+# This is a comment.
+# Each line is a file pattern followed by one or more owners.
+
+# These owners will be the default owners for everything in
+# the repo. These owners will be requested to review when 
+# someone opens a pull request. Code cannot be merged until
+# at least one person has reviewed and approved the PR.
+*       @ben1stone @MarieDale3 @DannyGB
