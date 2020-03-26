@@ -8,8 +8,9 @@ namespace DAS_Capture_The_Flag.Models.Game
 
     public interface IGameRepository
     {
-        List<Game> Games { get;  }
+        List<Game> Games { get; set; }
 
+        void UpdatePlayerReady(string connectionId);
     }
     public class GameRepository : IGameRepository
     {
@@ -18,6 +19,14 @@ namespace DAS_Capture_The_Flag.Models.Game
           
         }
 
-        public List<Game> Games { get; } = new List<Game>();
+        public List<Game> Games { get; set; } = new List<Game>();
+        
+        public void UpdatePlayerReady(string connectionId)
+        {
+            //var lGames.FirstOrDefault(g => g.Setup.HasPlayer(connectionId)).Setup.Players.Where(p => p.ConnectionId == connectionId).FirstOrDefault();//.Ready = true;
+
+                //Games[0].Setup.Players[1].Ready = true;
+        }
+    
     }
 }

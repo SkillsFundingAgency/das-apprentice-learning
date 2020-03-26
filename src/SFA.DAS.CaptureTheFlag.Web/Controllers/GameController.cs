@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using DAS_Capture_The_Flag.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +11,7 @@ namespace DAS_Capture_The_Flag.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Index(string gameId, string playerId)
         {
             //var map = new Map();
@@ -30,8 +28,9 @@ namespace DAS_Capture_The_Flag.Controllers
             //game.PlayerSoldiers.Add(new Soldier("Ben", 100, 1, 1));
 
             //return View(game);
+            var viewModel = new GameViewModel(gameId, playerId);
 
-            return View("~/Views/Game/Index.cshtml");
+            return View("~/Views/Game/Index.cshtml", viewModel);
         }
 
         

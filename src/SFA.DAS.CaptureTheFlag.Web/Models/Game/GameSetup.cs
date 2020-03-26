@@ -11,7 +11,6 @@ namespace DAS_Capture_The_Flag.Models.Game
         public string GameId { get; set; }
         public List<Player> Players { get; set; }
         public bool PlayersConnected { get; set; }
-        public bool Ready { get; set; }
         public int PlayersTurn { get; set; }
 
         public GameSetup()
@@ -35,5 +34,31 @@ namespace DAS_Capture_The_Flag.Models.Game
             }
             return false;
         }
+
+
+        public Game SetPlayerConnectionId(Game game, string connectionId)
+        {
+            if (game.Setup.Players[0].ConnectionId == null)
+            {
+                game.Setup.Players[0].ConnectionId = connectionId;
+            }
+            else
+            {
+                game.Setup.Players[1].ConnectionId = connectionId;
+            }
+
+            return game;
+        }
+
+        public Game SetPlayersConnected(Game game)
+        {
+            var player = game.Setup.Players;
+
+            game.Setup.PlayersConnected = player[0].ConnectionId != null && player[1].ConnectionId != null;
+
+            return game;
+        }
+
+        //public Game UpdatePlayerReady
     }
 }
