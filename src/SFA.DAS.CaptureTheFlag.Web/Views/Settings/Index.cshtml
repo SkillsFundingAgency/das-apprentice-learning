@@ -14,15 +14,13 @@
 {
     <h3>Music Volume</h3>
     <span>
-        @Html.DropDownListFor(model => model.MusicVolume, Enumerable.Range(1, 5)
-         .Select(model => new SelectListItem { Text = model.ToString(), Value = model.ToString() }))
+        @Html.TextBoxFor(model => model.MusicVolume)
     </span>
     <br />
 
     <h3>Sound Effects Volume</h3>
     <span>
-        @Html.DropDownListFor(model => model.SoundEffectsVolume, Enumerable.Range(1, 5)
-         .Select(model => new SelectListItem { Text = model.ToString(), Value = model.ToString() }))
+        @Html.TextBoxFor(model => model.SoundEffectsVolume)
     </span>
     <br />
 
@@ -34,6 +32,7 @@
     <br />
 
     <button type="submit">Save</button>
+    // Reset defaults only works before data is posted/saved.
     <button type="reset">Reset to Game Defaults</button>
     <br />
     <br />
