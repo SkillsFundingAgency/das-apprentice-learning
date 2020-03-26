@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAS-Capture-The-Flag", ".\SFA.DAS.CaptureTheFlag.Web\DAS-Capture-The-Flag.csproj", "{F3FA2D88-5BE0-4AC8-8800-C6805BEFD7EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAS-Capture-The-Flag", "SFA.DAS.CaptureTheFlag.Web\DAS-Capture-The-Flag.csproj", "{F3FA2D88-5BE0-4AC8-8800-C6805BEFD7EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

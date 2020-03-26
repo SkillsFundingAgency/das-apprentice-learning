@@ -1,0 +1,45 @@
+﻿@model SettingsModel
+@{
+    Layout = "_Layout";
+}
+
+<h1>Account Settings</h1>
+<br />
+<br />
+<br />
+
+<h1>Game Settings</h1>
+
+@using (Html.BeginForm("Post", "Settings", FormMethod.Post))
+{
+    <h3>Music Volume</h3>
+    <span>
+        @Html.DropDownListFor(model => model.MusicVolume, Enumerable.Range(1, 5)
+         .Select(model => new SelectListItem { Text = model.ToString(), Value = model.ToString() }))
+    </span>
+    <br />
+
+    <h3>Sound Effects Volume</h3>
+    <span>
+        @Html.DropDownListFor(model => model.SoundEffectsVolume, Enumerable.Range(1, 5)
+         .Select(model => new SelectListItem { Text = model.ToString(), Value = model.ToString() }))
+    </span>
+    <br />
+
+    <h3>Game Graphics</h3>
+    <span>
+        @Html.DropDownListFor(model => model.GraphicsDetail, new SelectList(Enum.GetValues(typeof(Graphics))))
+    </span>
+    <br />
+    <br />
+
+    <button type="submit">Save</button>
+    <button type="reset">Reset to Game Defaults</button>
+    <br />
+    <br />
+
+    <a asp-area="" asp-controller="Home" asp-action="Index">Return to Game</a>
+    <br />
+    <br />
+}
+
