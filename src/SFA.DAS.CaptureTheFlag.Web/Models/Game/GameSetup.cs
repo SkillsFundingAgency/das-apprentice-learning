@@ -8,7 +8,6 @@ namespace DAS_Capture_The_Flag.Models.Game
 {
     public class GameSetup
     {
-        public string GameId { get; set; }
         public List<Player> Players { get; set; }
         public bool PlayersConnected { get; set; }
         public int PlayersTurn { get; set; }
@@ -19,7 +18,6 @@ namespace DAS_Capture_The_Flag.Models.Game
             
             PlayersConnected = false;
             PlayersTurn = 0;
-            GameId = Guid.NewGuid().ToString(); 
         }
 
         public bool HasPlayer(string connectionId)
@@ -34,7 +32,6 @@ namespace DAS_Capture_The_Flag.Models.Game
             }
             return false;
         }
-
 
         public Game SetPlayerConnectionId(Game game, string connectionId)
         {
@@ -59,6 +56,5 @@ namespace DAS_Capture_The_Flag.Models.Game
             return game;
         }
 
-        //public Game UpdatePlayerReady
     }
 }

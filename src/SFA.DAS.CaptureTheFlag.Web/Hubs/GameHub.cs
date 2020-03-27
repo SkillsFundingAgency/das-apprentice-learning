@@ -8,29 +8,27 @@ using System.Threading.Tasks;
 
 namespace DAS_Capture_The_Flag.Hubs
 {
-    public class GameHub : BaseHub<IGameClient>
+    public class GameHub : Hub<IGameClient>
     {
+        private IGameRepository _repository;
 
-        public GameHub(IGameRepository repository) : base(repository)
+        public GameHub(IGameRepository repository) 
         {
+            _repository = repository;
         }
         public override async Task OnConnectedAsync()
         {
-           // var repo = GetAllGames
+            var repo = _repository;
         }
 
         public async Task UpdatePlayerConnectionId(string id, string playerId)
         {
-            var game = GetGame(id);
-
-            var player = game.Setup.Players.FirstOrDefault(p => p.ConnectionId == playerId); //GetPlayer(game.Setup, Context.ConnectionId);
-
-            player.ConnectionId = Context.ConnectionId;
+            _repository.Games.FirstOrDefault(g => g.Id == id).Setup.Players.FirstOrDefault(p => p.ConnectionId == playerId).ConnectionId = Context.ConnectionId;
         }
     }
 
     public interface IGameClient
     {
-       
+        Task UpdatePlayerConnectionId(string id, string playerId);
     }
 }
