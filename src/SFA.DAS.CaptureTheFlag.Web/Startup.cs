@@ -1,17 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DAS_Capture_The_Flag.Hubs;
 using DAS_Capture_The_Flag.Models.Game;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.AspNet.SignalR;
 
 namespace DAS_Capture_The_Flag
 {
