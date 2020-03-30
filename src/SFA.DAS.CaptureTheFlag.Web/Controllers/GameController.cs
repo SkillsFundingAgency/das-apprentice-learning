@@ -1,11 +1,18 @@
 ﻿
-using DAS_Capture_The_Flag.ViewModels;
+using DAS_Capture_The_Flag.Models.Game;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace DAS_Capture_The_Flag.Controllers
 {
     public class GameController : Controller
     {
+        private IGameRepository _repository;
+
+        public GameController(IGameRepository repository)
+        {
+            _repository = repository;
+        }
         public IActionResult FindGame()
         {
             return View();
@@ -14,21 +21,9 @@ namespace DAS_Capture_The_Flag.Controllers
         [HttpGet]
         public IActionResult Index(string gameId, string playerId)
         {
-            //var map = new Map();
+            var game = _repository.Games.FirstOrDefault(g => g.Id == gameId);
 
-            //game.GameBoard = new string[5, 5]
-            //  {
-            //    { "grass", "wall", "wall", "wall", "wall"},
-            //    { "wall", "wall", "grass", "grass", "grass"},
-            //    { "grass", "grass", "grass", "grass", "grass"},
-            //    { "grass", "grass", "grass", "grass", "grass"},
-            //    { "grass", "grass", "grass", "grass", "grass"}
-            //  };
-            //game.PlayerSoldiers = new List<Soldier>();
-            //game.PlayerSoldiers.Add(new Soldier("Ben", 100, 1, 1));
-
-            //return View(game);
-            var viewModel = new GameViewModel(gameId, playerId);
+            var viewModel = new GameViewModel(game, playerId);
 
             return View("~/Views/Game/Index.cshtml", viewModel);
         }

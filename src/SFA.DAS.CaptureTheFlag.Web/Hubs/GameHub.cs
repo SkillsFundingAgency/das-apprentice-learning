@@ -21,7 +21,7 @@ namespace DAS_Capture_The_Flag.Hubs
             var repo = _repository;
         }
 
-        public async Task UpdatePlayerConnectionId(string id, string playerId)
+        public async Task UpdatePlayerConnectionId(string id, string playerId, Game game)
         {
             _repository.Games.FirstOrDefault(g => g.Id == id).Setup.Players.FirstOrDefault(p => p.ConnectionId == playerId).ConnectionId = Context.ConnectionId;
         }
