@@ -1,12 +1,52 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+   
+<div class="govuk-main-wrapper">
+    <div class="govuk-girid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Welcome to Capture The Flag</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
-    <p></p>
 
-    <a asp-controller="SignIn" asp-action="Index"> Find Game </a>
+            <a role="button" class="govuk-button govuk-button--start" asp-controller="SignIn" asp-action="Index">Play now </a>
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <h2 class="govuk-heading-m" id="subsection-title">
+                Menu
+            </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16">
+                    <li>
+                        <a class="govuk-link" href="#">
+                            Account settings
+                        </a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="#">
+                            Game Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="#">
+                            Forums
+                        </a>
+                    </li>
+                    @*<li>
+                        <a href="#" class="govuk-link govuk-!-font-weight-bold">
+                            More <span class="govuk-visually-hidden">in Subsection</span>
+                        </a>
+                    </li>*@
+                </ul>
+            </nav>
+
+        </div>
+    </div>
 </div>
+       
+        
+
+
 
