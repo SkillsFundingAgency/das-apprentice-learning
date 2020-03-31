@@ -8,20 +8,25 @@ namespace DAS_Capture_The_Flag.Models.Game
     
     public class GameData
     {
-        public string[,] ChosenMap { get; set; }
+        public int[,] ChosenMap { get; set; }
 
         public List<Soldier> Soldiers { get; set; }
 
         public GameData()
         {
-            Soldiers = new List<Soldier>() { new Soldier(1, 0, 0), new Soldier(2, 9, 9) };
-            ChosenMap = new string[5, 5]
+            Soldiers = new List<Soldier>() { new Soldier(1, 0, 0), new Soldier(2, 4, 4) };
+            ChosenMap = new int[10, 10]
                                     {
-                                        { "grass", "wall", "wall", "wall", "wall"},
-                                        { "wall", "wall", "grass", "grass", "grass"},
-                                        { "grass", "grass", "grass", "grass", "grass"},
-                                        { "grass", "grass", "grass", "grass", "grass"},
-                                        { "grass", "grass", "grass", "grass", "grass"}
+                                        { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
+                                        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                        { 1, 1, 1, 0, 0, 0, 0, 0, 0, 0 },
+                                        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                        { 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
+                                        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                                        { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
                                     };
         }
     } 
