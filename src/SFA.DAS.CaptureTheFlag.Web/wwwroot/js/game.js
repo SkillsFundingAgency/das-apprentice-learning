@@ -6,7 +6,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/gamehub").build();
 
 connection.start().then(function () {
    
-    connection.invoke("UpdatePlayerConnectionId",game.id, game.playerId, game).catch(function (err) {
+    connection.invoke("UpdatePlayerConnectionId",game.Id, game.PlayerId, game).catch(function (err) {
         return console.error(err.toString());
     });  
 
@@ -22,15 +22,30 @@ var tileH = 50;
 var mapW = 10;
 var mapH = 10;
 
+var soldierPlayerOne = new Image(40, 40);
+var soldierPlayerTwo = new Image(40, 40);
+soldierPlayerOne.src = "../lib/Game/Assets/soldier-player-1.png";
+soldierPlayerTwo.src = "../lib/Game/Assets/soldier-player-2.png";
+
+
 window.onload = function () {
     setUpCanvas();
     requestAnimationFrame(drawGame);
+    
 }
+connection.on("UpdateModel", function (newGame ) {
+    
+    newGame = JSON.parse(newGame);
+    
+    game = newGame;
+    console.log(game);
+});
 
 function drawGame() {
     if (ctx == null) { return; }
 
     DrawMap();
+    DrawSoldiers();
 
     requestAnimationFrame(drawGame);
 }
@@ -40,6 +55,9 @@ function setUpCanvas() {
     ctx = canvas.getContext('2d');
     canvas.addEventListener('click', function (event) {
 
+        connection.invoke("CanvasClickController", getTileClicked(event).x, getTileClicked(event).y, game.Game.Id).catch(function (err) {
+            return console.error(err.toString());
+        });
         console.log(getTileClicked(event));
     });
 }
@@ -47,3 +65,33 @@ function setUpCanvas() {
 function getTileClicked(event) {
     return { x : (Math.floor(event.offsetX / tileW )), y : Math.floor(event.offsetY/tileH)}
 }
+
+function DrawSoldiers() {
+    var soldiers = game.Game.Data.Soldiers;
+
+    soldiers.forEach(soldier => {
+        if (soldier.Player == 1)
+        {
+            ctx.drawImage(soldierPlayerOne, soldier.xPos * tileW, soldier.yPos * tileH)
+        }
+        else
+        {
+            ctx.drawImage(soldierPlayerOne, soldier.xPos * tileW, soldier.yPos * tileH)
+        }
+
+        if (soldier.Selected == true) {
+            highlightSoldier(soldier.xPos * tileW, soldier.yPos * tileH);
+        }
+        
+    });
+      
+}
+
+function highlightSoldier(x, y) {
+    ctx.strokeStyle = "#e9ed07"
+    ctx.strokeRect(x - 2, y - 2, 44, 44)
+    
+    console.log(x)
+
+}
+

@@ -1,6 +1,8 @@
 ﻿
 using DAS_Capture_The_Flag.Models.Game;
+using DAS_Capture_The_Flag.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Linq;
 
 namespace DAS_Capture_The_Flag.Controllers
@@ -24,7 +26,6 @@ namespace DAS_Capture_The_Flag.Controllers
             var game = _repository.Games.FirstOrDefault(g => g.Id == gameId);
 
             var viewModel = new GameViewModel(game, playerId);
-
             return View("~/Views/Game/Index.cshtml", viewModel);
         }
 

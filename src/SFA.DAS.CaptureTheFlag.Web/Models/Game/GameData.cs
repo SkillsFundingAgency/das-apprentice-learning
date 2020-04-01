@@ -12,9 +12,13 @@ namespace DAS_Capture_The_Flag.Models.Game
 
         public List<Soldier> Soldiers { get; set; }
 
+        public int PlayersTurn { get; set; }
+
+       
+
         public GameData()
         {
-            Soldiers = new List<Soldier>() { new Soldier(1, 0, 0), new Soldier(2, 4, 4) };
+            Soldiers = new List<Soldier>() { new Soldier(1, 0, 0) , new Soldier(2, 9, 9) };
             ChosenMap = new int[10, 10]
                                     {
                                         { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
@@ -28,6 +32,7 @@ namespace DAS_Capture_The_Flag.Models.Game
                                         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                                         { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
                                     };
+            PlayersTurn = 1;
         }
     } 
 }

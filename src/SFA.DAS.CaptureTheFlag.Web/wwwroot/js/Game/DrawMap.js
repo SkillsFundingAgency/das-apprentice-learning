@@ -1,6 +1,6 @@
 ﻿function DrawMap() {
     
-    var map = game.game.data.chosenMap;
+    var map = game.Game.Data.ChosenMap;
 
     for (var x = 0; x < mapW; x++) {
         for (var y = 0; y < mapH; y++) {

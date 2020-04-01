@@ -17,10 +17,7 @@ namespace DAS_Capture_The_Flag.ViewModels
             using (var stringWriter = new StringWriter())
             using (var jsonWriter = new JsonTextWriter(stringWriter))
             {
-                var serializer = new JsonSerializer
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
-                };
+                var serializer = new JsonSerializer();
 
                 jsonWriter.QuoteName = false;
                 serializer.Serialize(jsonWriter, value);

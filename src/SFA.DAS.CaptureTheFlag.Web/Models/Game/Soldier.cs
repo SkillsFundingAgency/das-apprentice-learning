@@ -5,7 +5,8 @@
         public int xPos { get; set; }
         public int yPos { get; set; }
         public int Player { get; set; }
-        
+        public bool Selected { get; set; }
+
         public Soldier(int player, int xpos, int ypos)
         {
             Player = player;
