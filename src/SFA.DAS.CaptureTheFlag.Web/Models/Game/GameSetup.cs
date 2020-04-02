@@ -17,7 +17,7 @@ namespace DAS_Capture_The_Flag.Models.Game
             Players = new List<Player>() { new Player(), new Player() };
             
             PlayersConnected = false;
-            PlayersTurn = 0;
+            PlayersTurn = 1;
         }
 
         public bool HasPlayer(string connectionId)

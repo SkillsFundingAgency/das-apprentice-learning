@@ -41,6 +41,7 @@ connection.on("UpdateModel", function (newGame ) {
     console.log(game);
 });
 
+
 function drawGame() {
     if (ctx == null) { return; }
 
@@ -70,19 +71,20 @@ function DrawSoldiers() {
     var soldiers = game.Game.Data.Soldiers;
 
     soldiers.forEach(soldier => {
+    
+        if (soldier.Selected == true) {
+            highlightSoldier(soldier.xPos * tileW, soldier.yPos * tileH);
+            highlightPotentialMoves(soldier.PotentialMoves);
+        }
         if (soldier.Player == 1)
         {
             ctx.drawImage(soldierPlayerOne, soldier.xPos * tileW, soldier.yPos * tileH)
         }
         else
         {
-            ctx.drawImage(soldierPlayerOne, soldier.xPos * tileW, soldier.yPos * tileH)
+            ctx.drawImage(soldierPlayerTwo, soldier.xPos * tileW, soldier.yPos * tileH)
         }
 
-        if (soldier.Selected == true) {
-            highlightSoldier(soldier.xPos * tileW, soldier.yPos * tileH);
-        }
-        
     });
       
 }
@@ -90,8 +92,18 @@ function DrawSoldiers() {
 function highlightSoldier(x, y) {
     ctx.strokeStyle = "#e9ed07"
     ctx.strokeRect(x - 2, y - 2, 44, 44)
-    
-    console.log(x)
-
 }
 
+function highlightPotentialMoves(moves) {
+    ctx.globalAlpha = 0.4;
+
+    moves.forEach(move => {
+        
+        ctx.fillStyle = "#e9ed07";
+        ctx.fillRect(move.X * tileW, move.Y * tileH, 50, 50)
+        
+        
+    })
+    ctx.globalAlpha = 1.0;
+  //  console.log(moves);
+}
