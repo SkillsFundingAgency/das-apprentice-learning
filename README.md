@@ -24,8 +24,9 @@ The repository can be found here: https://github.com/SkillsFundingAgency/das-app
 1.   Framework .NET Core 3.1 
 2.   Architecture MVC 
 
-## Contributing
-Please read [CONTRIBUTING.md]() for details on our code of conduct, and the process for submitting pull requests to us.
+## Code Owners
+Please read the [CODEOWNER](https://github.com/SkillsFundingAgency/das-apprentice-learning/blob/master/CODEOWNERS) file for 
+details on our code owners and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -39,3 +40,49 @@ Please read [CONTRIBUTING.md]() for details on our code of conduct, and the proc
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/SkillsFundingAgency/das-apprentice-learning/blob/master/LICENSE) file for details
 
 ## Acknowledgments
+
+## SonarCloud Analysis
+
+SonarCloud analysis can be performed using a docker container which can be built from the included dockerfile.
+
+    Docker must be running Windows containers in this instance
+
+An example of the docker run command to analyse the code base can be found below. 
+
+For this docker container to be successfully created you will need:
+* docker running Windows containers
+* a user on SonarCloud.io with permission to run analysis
+* a SonarQube.Analysis.xml file in the root of the git repository.
+
+This file takes the format:
+
+```xml
+<SonarQubeAnalysisProperties  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+<Property Name="sonar.host.url">https://sonarcloud.io</Property>
+<Property Name="sonar.login">[Your SonarCloud user token]</Property>
+</SonarQubeAnalysisProperties>
+```     
+
+### Example:
+
+_docker run [OPTIONS] IMAGE COMMAND_
+
+[Docker run documentation](https://docs.docker.com/engine/reference/commandline/run/)
+
+```docker run --rm -v c:/projects/das-apprentice-learning:c:/projects/das-apprentice-learning -w c:/projects/das-apprentice-learning 3d9151a444b2 powershell -F c:/projects/das-apprentice-learning/sonarcloud/analyse.ps1```
+
+#### Options:
+
+|Option|Description|
+|---|---|
+|--rm| Remove any existing containers for this image
+|-v| Bind the current directory of the host to the given directory in the container ($PWD may be different on your platform). This should be the folder where the code to be analysed is
+|-w| Set the working directory
+
+#### Command:
+
+Execute the analyse.ps1 PowerShell script	
+
+### SonarLinter Extension
+
+The SonarLinter extension for VisualStudio should be installed and linked to the SonarCloud.io project to enable in IDE code analysis that uses the same ruleset as the manual analysis performed by the above Docker instance
