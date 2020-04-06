@@ -8,10 +8,10 @@ namespace DAS_Capture_The_Flag.Web.Models.Game
 {
     public class GameViewModel
     {
-        public string PlayerId { get; set; }
+        public Guid PlayerId { get; set; }
         public Guid Id { get; set; }
         public Application.Models.GameModels.Game Game { get; set; }
-        public GameViewModel(Application.Models.GameModels.Game game, string playerId)
+        public GameViewModel(Application.Models.GameModels.Game game, Guid playerId)
         {
             Id = game.Id;
             PlayerId = playerId;

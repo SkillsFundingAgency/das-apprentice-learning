@@ -22,7 +22,7 @@ namespace DAS_Capture_The_Flag.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(Guid gameId, string playerId)
+        public IActionResult Index(Guid gameId, Guid playerId)
         {
             var game = _repository.Games.FirstOrDefault(g => g.Id == gameId);
 
