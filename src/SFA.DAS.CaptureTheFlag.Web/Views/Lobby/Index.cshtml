@@ -1,0 +1,54 @@
+﻿@model DAS_Capture_The_Flag.Models.Lobby.LobbyViewModel;
+@using DAS_Capture_The_Flag.Application.Helpers;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<a class="govuk-back-link" asp-action="Index" asp-controller="Home">Back</a>
+
+<h1 class="govuk-heading-xl">Finding game</h1>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+        <div id="player" class="player-container">
+            <h2 class="govuk-heading-m"> Player 1 </h2>
+
+            
+        </div>
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+        <div id="opponent" class="player-container">
+            <h2 class="govuk-heading-m"> Player 2 </h2>
+            <div id="waiting-for-opponent-message">
+                <p> Waiting for an opponent</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-inset-text" id="opponent-ready-message" hidden>
+        Opponent is ready to start!   
+    </div>
+    <button class="govuk-button" id="start-button" type="submit" onclick="UpdatePlayerReady()" disabled> Start Game</button>
+
+    <a asp-action="Index" asp-controller="Home" class="das-button--link">Cancel</a>
+</div>
+
+<script>
+    var jsModel
+    var pageModel
+    var opponent
+
+    window.onload = function () {
+         pageModel = @JavascriptConvert.SerializeObject(Model);
+    }
+
+</script>
+
+<script type="text/javascript" src="~/js/Lobby.js"></script>

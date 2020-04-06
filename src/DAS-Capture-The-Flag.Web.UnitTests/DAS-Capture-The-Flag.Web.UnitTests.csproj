@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DAS-Capture-The-Flag.Application\DAS-Capture-The-Flag.Application.csproj" />
     <ProjectReference Include="..\SFA.DAS.CaptureTheFlag.Web\DAS-Capture-The-Flag.Web.csproj" />
   </ItemGroup>
 

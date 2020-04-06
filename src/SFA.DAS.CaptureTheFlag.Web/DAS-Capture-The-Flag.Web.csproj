@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Setup\" />
+    <ProjectReference Include="..\DAS-Capture-The-Flag.Application\DAS-Capture-The-Flag.Application.csproj" />
   </ItemGroup>
 
 

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,11 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DAS_Capture_The_Flag.Hubs;
-using DAS_Capture_The_Flag.Models.Game;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNet.SignalR;
 using MediatR;
-using System.Reflection;
+using DAS_Capture_The_Flag.Application.Repositories.GameRepository;
+using DAS_Capture_The_Flag.Application.Handlers.JoinOrCreateGame;
 
 namespace DAS_Capture_The_Flag
 {
@@ -32,7 +28,7 @@ namespace DAS_Capture_The_Flag
             services.AddControllersWithViews();
             services.AddSingleton<IGameRepository>(new GameRepository());
             services.AddSignalR();
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(JoinOrCreateGameHandler));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +58,6 @@ namespace DAS_Capture_The_Flag
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                
-                endpoints.MapHub<SetupHub>("/setuphub");
                 endpoints.MapHub<GameHub>("/gamehub");
             });
         }

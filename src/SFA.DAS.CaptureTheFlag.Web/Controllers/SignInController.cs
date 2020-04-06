@@ -14,6 +14,12 @@ namespace DAS_Capture_The_Flag.Controllers
             return View();
         }
 
+        public IActionResult GuestSignIn()
+        {
+
+            return RedirectToAction("Index", "Lobby", new { playerId = Guid.NewGuid() });
+        }
+
         [HttpPost]
         public IActionResult SetName(SetNickNameViewModel vm)
         {

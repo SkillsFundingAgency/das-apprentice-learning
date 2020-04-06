@@ -1,6 +1,9 @@
 ﻿
-using DAS_Capture_The_Flag.Models.Game;
+using DAS_Capture_The_Flag.Application.Models.GameModels;
+using DAS_Capture_The_Flag.Application.Repositories.GameRepository;
+using DAS_Capture_The_Flag.Web.Models.Game;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 
 namespace DAS_Capture_The_Flag.Controllers
@@ -19,7 +22,7 @@ namespace DAS_Capture_The_Flag.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index(string gameId, string playerId)
+        public IActionResult Index(Guid gameId, string playerId)
         {
             var game = _repository.Games.FirstOrDefault(g => g.Id == gameId);
 
