@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DAS_Capture_The_Flag.Application.Models.GameModels
 {
     public class Game
     {
         public Guid Id { get; set; }
-        public GameSetup Setup { get; set; }
         public GameData Data { get; set; }
+        public Players Players { get; set; }
+        public bool PlayersConnected { get; set; } = false;
 
         public Game()
         {
             Id = Guid.NewGuid();
-            Setup = new GameSetup();
             Data = new GameData();
+            Players = new Players() { PlayerOne = new Player(), PlayerTwo = new Player() };
         }
     }
 }

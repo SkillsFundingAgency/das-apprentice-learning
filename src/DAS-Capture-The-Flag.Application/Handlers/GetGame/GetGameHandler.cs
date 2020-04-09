@@ -1,12 +1,9 @@
-﻿using DAS_Capture_The_Flag.Application.Models.GameModels;
-using DAS_Capture_The_Flag.Application.Repositories.GameRepository;
-using MediatR;
-using System;
-using System.Collections.Generic;
+﻿using MediatR;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using DAS_Capture_The_Flag.Application.Models.GameModels;
+using DAS_Capture_The_Flag.Application.Repositories.GameRepository;
 
 namespace DAS_Capture_The_Flag.Application.Handlers.GetGame
 {

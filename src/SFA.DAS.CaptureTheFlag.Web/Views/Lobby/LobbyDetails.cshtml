@@ -1,0 +1,36 @@
+﻿@model DAS_Capture_The_Flag.Web.Models.Lobby.LobbyDetailsViewModel;
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+        <div id="player" class="player-container">
+            <h2 class="govuk-heading-m"> Player 1 </h2>
+
+
+        </div>
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+        <div id="opponent" class="player-container">
+            <h2 class="govuk-heading-m"> Player 2 </h2>
+            <p> @Model.Opponent.Id </p>
+            <div id="waiting-for-opponent-message">
+                <p> Waiting for an opponent</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-inset-text" id="opponent-ready-message" hidden>
+        Opponent is ready to start!
+    </div>
+
+    
+       
+        <button class="govuk-button" id="start-button" onclick="UpdatePlayerReady('@Model.Game.Id' , '@Model.Player.Id')" disabled="@Model.PlayersConnected.Equals(false)"> Start Game</button>
+    
+    
+    <a asp-action="Index" asp-controller="Home" class="das-button--link">Cancel</a>
+</div>

@@ -9,20 +9,21 @@ namespace DAS_Capture_The_Flag.Hubs
 {
     public class GameHub : Hub<IGameClient>
     {
-        private IGameRepository _repository;
+        private readonly IGameRepository _repository;
 
         public GameHub(IGameRepository repository) 
         {
             _repository = repository;
         }
+
         public override async Task OnConnectedAsync()
         {
-            var repo = _repository;
+            
         }
 
         public async Task UpdatePlayerConnectionId(Guid id, Guid playerId, Game game)
         {
-            _repository.Games.FirstOrDefault(g => g.Id == id).Setup.Players.FirstOrDefault(p => p.Id == playerId).ConnectionId = Context.ConnectionId;
+           // _repository.Games.FirstOrDefault(g => g.Id == id).Setup.Players.FirstOrDefault(p => p.Id == playerId).ConnectionId = Context.ConnectionId;
         }
     }
 

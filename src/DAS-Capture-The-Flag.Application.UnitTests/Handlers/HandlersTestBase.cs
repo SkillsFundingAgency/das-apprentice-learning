@@ -1,10 +1,8 @@
 ﻿using DAS_Capture_The_Flag.Application.Models.GameModels;
 using DAS_Capture_The_Flag.Application.Repositories.GameRepository;
-using NSubstitute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers
 {
@@ -12,61 +10,55 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers
     public class HandlersTestBase
     {
         protected IGameRepository Repository;
+
         public Guid PlayerId_1 = Guid.NewGuid();
         public Guid PlayerId_2 = Guid.NewGuid();
         public Guid GameId = Guid.NewGuid();
-
         public Guid CorrectGameId = Guid.NewGuid();
         public Guid IncorrectGameId = Guid.NewGuid();
 
         [SetUp]
         public void Arrange()
         {
-            Repository = Substitute.For<IGameRepository>();
-
-
+            Repository = new GameRepository(); 
         }
 
-        public List<Game> CreateEmptyLobby()
+        public List<Game> CreateTestEmptyLobby()
         {
             return new List<Game>();
         }
 
-        public List<Game> CreateLobbyOneGameOnePlayer()
+        public List<Game> CreateTestLobbyWithOneGameAndOnePlayer()
         {
             return new List<Game>()
             {
                 new Game()
                 {
-                    Setup = new GameSetup()
-                    {
-                        Players = new List<Player>()
-                        {
-                            new Player() {  Id = PlayerId_1},
-                            new Player()
-                        }
+                    Players = {
+                        PlayerOne = new Player() {  Id = PlayerId_1},
+                        PlayerTwo = new Player()
                     }
                 }
             };
         }
-        public List<Game> CreateLobbyOneGameTwoPlayers_BothNotReady()
+
+        public List<Game> CreateTestLobbyWithOneGameTwoPlayers_BothNotReady()
         {
             return new List<Game>()
             {
                 new Game()
                 {
                     Id = GameId,
-                    Setup = new GameSetup()
+                    PlayersConnected = true,
+                    Players =
                     {
-                        PlayersConnected = true,
-                        Players = new List<Player>()
-                        {
-                            new Player() { Id = PlayerId_1, Ready = false },
-                            new Player() { Id = PlayerId_2, Ready = false }
-                        }
+                        PlayerOne = new Player() { Id = PlayerId_1, Ready = false },
+                        PlayerTwo = new Player() { Id = PlayerId_2, Ready = false }
                     }
+                    
                 }
             };
         }
+
     }
 }

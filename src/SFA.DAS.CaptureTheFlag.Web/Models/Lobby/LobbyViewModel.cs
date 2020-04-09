@@ -1,10 +1,7 @@
 ﻿using DAS_Capture_The_Flag.Application.Models.GameModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace DAS_Capture_The_Flag.Models.Lobby
+namespace DAS_Capture_The_Flag.Web.Models.Lobby
 {
     public class LobbyViewModel
     {
@@ -13,9 +10,15 @@ namespace DAS_Capture_The_Flag.Models.Lobby
 
         public LobbyViewModel() { }
 
-        public LobbyViewModel(Game game, Guid playerId)
+        public LobbyViewModel(Application.Models.GameModels.Game game, Guid playerId)
         {
+            if (game == null)
+            {
+                throw new ArgumentException();
+            }
+
             Id = game.Id;
+           
             PlayerId = playerId;
         }
     }

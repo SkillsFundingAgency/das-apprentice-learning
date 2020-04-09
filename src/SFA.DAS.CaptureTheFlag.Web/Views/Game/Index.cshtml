@@ -1,5 +1,4 @@
 ﻿@model DAS_Capture_The_Flag.Web.Models.Game.GameViewModel;
-@using DAS_Capture_The_Flag.Application.Helpers;
 @{
     ViewData["Title"] = "Index";
 }
@@ -8,8 +7,7 @@
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script>
-    var game = @JavascriptConvert.SerializeObject(Model)
-    
+   
 </script>
 <script src="~/js/game.js">
 </script>

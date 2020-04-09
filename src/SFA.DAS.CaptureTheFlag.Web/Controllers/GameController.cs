@@ -1,21 +1,21 @@
-﻿
-using DAS_Capture_The_Flag.Application.Models.GameModels;
+﻿using System;
+using System.Linq;
 using DAS_Capture_The_Flag.Application.Repositories.GameRepository;
 using DAS_Capture_The_Flag.Web.Models.Game;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
+
 
 namespace DAS_Capture_The_Flag.Controllers
 {
     public class GameController : Controller
     {
-        private IGameRepository _repository;
+        private readonly IGameRepository _repository;
 
         public GameController(IGameRepository repository)
         {
             _repository = repository;
         }
+
         public IActionResult FindGame()
         {
             return View();
@@ -28,7 +28,7 @@ namespace DAS_Capture_The_Flag.Controllers
 
             var viewModel = new GameViewModel(game, playerId);
 
-            return View("~/Views/Game/Index.cshtml", viewModel);
+            return View(viewModel);
         }
 
         
