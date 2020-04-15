@@ -20,8 +20,6 @@
                 <p>Login or Register to start a new game.</p>
             }
 
-            <a role="button" class="govuk-button govuk-button--start" asp-controller="SignIn" asp-action="Index">Play now </a>
-
         </div>
 
         <div class="govuk-grid-column-one-third">
@@ -32,7 +30,7 @@
             <nav role="navigation" aria-labelledby="subsection-title">
                 <ul class="govuk-list govuk-!-font-size-16">
                     <li>
-                        <a class="govuk-link" href="#">
+                        <a class="govuk-link" asp-area="Identity" asp-page="/Account/Manage/Index">
                             Account settings
                         </a>
                     </li>
@@ -48,7 +46,6 @@
                     </li>
                 </ul>
             </nav>
-
         </div>
     </div>
 </div>

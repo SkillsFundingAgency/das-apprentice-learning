@@ -2,28 +2,31 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-    <ul class="navbar-nav">
-        @if (SignInManager.IsSignedIn(User))
-        {
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index"
-                   title="Manage">Welcome @User.Identity.Name</a>
-            </li>
-            <li class="nav-item">
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
-                      asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    
-                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                </form>
-            </li>
-        }
-        else
-        {
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-            </li>
-        }
-    </ul>
+<div class="sfa-navigation-wrapper">
+    <div class="grid-row">
+        <div class="column-one-half sfa-navigation">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li class="nav-item" style="list-style-type: none;">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index"
+                       title="Manage">Welcome @User.Identity.Name</a>
+                </li>
+                <li class="nav-item" style="list-style-type: none;">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                          asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
+                </li>
+            }
+            else
+            {
+                <div id="bannerSignedOut">
+                    <a asp-area="Identity" asp-page="/Account/Login" 
+                       id="loginLink" title="Sign in"><i class="fa fa-sign-in"></i>Log in / </a>
+                    <a asp-area="Identity" asp-page="/Account/Register" 
+                       id="registerLink" title="Create account"><i class="fa fa-sign-in"></i>Create account</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -13,6 +13,6 @@ namespace DAS_Capture_The_Flag.Data
         {
         }
 
-        // User Game Settings Table
+        // [TODO] User Game Settings
     }
 }
