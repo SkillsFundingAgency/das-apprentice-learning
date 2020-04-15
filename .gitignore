@@ -341,5 +341,6 @@ healthchecksdb
 
 #SonarCloud
 .sonarqube/
+.sonarlint/
 SonarQube.Analysis.xml
 **/*.slconfig
