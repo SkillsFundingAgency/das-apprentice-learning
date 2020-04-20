@@ -1,12 +1,61 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
-    <p></p>
+<div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">Welcome to Capture The Flag</h1>
 
-    <a asp-controller="SignIn" asp-action="Index"> Find Game </a>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <form action="/Game/FindGame" method="get">
+                    <button class="govuk-button" type="submit">Find a new game</button>
+                </form>
+            }
+            else
+            {
+                <p>
+                    <a asp-area="Identity" asp-page="/Account/Login"
+                       id="loginLink" title="Sign in"><i class="fa fa-sign-in"></i>Log in </a> or
+                    <a asp-area="Identity" asp-page="/Account/Register"
+                       id="registerLink" title="Create account"><i class="fa fa-sign-in"></i>Register</a> to start a new game.
+                </p>
+            }
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <h2 class="govuk-heading-m" id="subsection-title">
+                Menu
+            </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16">
+                    <li>
+                        <a class="govuk-link" asp-area="Identity" asp-page="/Account/Manage/Index">
+                            Account settings
+                        </a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="#">
+                            Game Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="#">
+                            Forums
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
+
+
+
+
 

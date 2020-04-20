@@ -1,0 +1,51 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Sign in";
+}
+
+<div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+            <h1 class="heading-large">@ViewData["Title"]</h1>
+            <section>
+                <form id="account" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="form-label" asp-for="Input.UserName"></label>
+                        <input asp-for="Input.UserName" class="form-control" />
+                        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" asp-for="Input.Password"></label>
+                        <input asp-for="Input.Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label class="form-label" asp-for="Input.RememberMe">
+                                <input asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="govuk-button">Log in</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <div class="govuk-grid-column-one-half">
+            <h1 class="heading-large">New user</h1>
+            <nav role="navigation" aria-labelledby="subsection-title">
+                <p>
+                    If you're new to Capture the Flag you'll need to
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">register</a> with an account to play.
+                </p>
+            </nav>
+        </div>
+    </div>
+</div>
+

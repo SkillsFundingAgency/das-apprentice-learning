@@ -338,3 +338,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+#SonarCloud
+.sonarqube/
+.sonarlint/
+SonarQube.Analysis.xml
+**/*.slconfig
