@@ -17,7 +17,12 @@
             }
             else
             {
-                <p>Login or Register to start a new game.</p>
+                <p>
+                    <a asp-area="Identity" asp-page="/Account/Login"
+                       id="loginLink" title="Sign in"><i class="fa fa-sign-in"></i>Log in </a> or
+                    <a asp-area="Identity" asp-page="/Account/Register"
+                       id="registerLink" title="Create account"><i class="fa fa-sign-in"></i>Register</a> to start a new game.
+                </p>
             }
 
         </div>
