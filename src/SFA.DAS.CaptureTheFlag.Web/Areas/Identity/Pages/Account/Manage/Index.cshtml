@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<div class="govuk-main-wrapper">
+    <h1 class="govuk-heading-xl">Manage your account</h1>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <div>
+                <h2 class="govuk-heading-l">@ViewData["Title"]</h2>
+                <a class="form-label" title="Manage">Player username: @User.Identity.Name</a>
+            </div>
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+            <div class="row">
+                <div class="col-md-3">
+                    <partial name="_ManageNav" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

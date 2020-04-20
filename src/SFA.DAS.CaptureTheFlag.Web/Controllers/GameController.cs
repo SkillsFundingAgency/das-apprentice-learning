@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DAS_Capture_The_Flag.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DAS_Capture_The_Flag.Controllers

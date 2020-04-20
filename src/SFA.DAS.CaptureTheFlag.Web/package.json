@@ -15,7 +15,10 @@
   "bugs": {
     "url": "https://github.com/ben1stone/das-capture-the-flag/issues"
   },
-  "homepage": "https://github.com/ben1stone/das-capture-the-flag#readme",
+  "homepage": "https://github.com/ben1stone/das-capture-the-flag#" +
+    "readme" +
+    "" +
+    "",
   "dependencies": {
     "govuk-frontend": "^3.5.0",
     "gulp": "^4.0.2",

@@ -13,6 +13,14 @@ The repository can be found here: https://github.com/SkillsFundingAgency/das-app
 ## Setup
 1.   Clone the project and open the solution in Visual Studio 2019.
 2.   The web app is set by dafult to run at https://localhost:44353/
+3.   Authentication uses the Entity Framework of ASP.NET Core Identity. You will need to Register an account to access the game.
+     Currently there is no email confirmation functionality so click the link to confirm your account.
+4.   Database: to setup and update the database tables open the Package Manager Console and use PMC commands:
+        
+        Add-Migration <migration name>
+        Update-Database
+        
+     For more PMC commands see https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/powershell
 
 ## Tests
 
