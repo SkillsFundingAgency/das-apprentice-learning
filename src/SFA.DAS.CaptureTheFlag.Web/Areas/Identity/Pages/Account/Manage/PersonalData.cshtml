@@ -1,0 +1,35 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Personal Data";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<div class="govuk-main-wrapper">
+    <h1 class="govuk-heading-xl">Manage your account</h1>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <div>
+                <h2 class="govuk-heading-l">@ViewData["Title"]</h2>
+                <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
+                <p>
+                    <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+                </p>
+                <form id="download-data" asp-page="DownloadPersonalData" method="post" class="form-group">
+                    <button class="govuk-button" type="submit">Download</button>
+                </form>
+                <p>
+                    <a id="delete" asp-page="DeletePersonalData" class="btn btn-primary">Delete your data</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+            <div class="row">
+                <div class="col-md-3">
+                    <partial name="_ManageNav" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
