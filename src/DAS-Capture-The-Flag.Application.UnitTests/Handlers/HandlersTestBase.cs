@@ -28,7 +28,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers
             return new List<Game>();
         }
 
-        public List<Game> CreateTestLobbyWithOneGameAndOnePlayer()
+        public List<Game> CreateTestLobbyWithOneGameAndOnePlayerWaitingForAnOpponent()
         {
             return new List<Game>()
             {
@@ -42,7 +42,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers
             };
         }
 
-        public List<Game> CreateTestLobbyWithOneGameTwoPlayers_BothNotReady()
+        public List<Game> CreateTestLobbyWithOneGameTwoPlayers_WhereBothPlayersAreNotReady()
         {
             return new List<Game>()
             {

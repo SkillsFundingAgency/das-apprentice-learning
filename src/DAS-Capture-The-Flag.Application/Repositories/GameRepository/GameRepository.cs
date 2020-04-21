@@ -15,6 +15,11 @@ namespace DAS_Capture_The_Flag.Application.Repositories.GameRepository
             return Games;
         }
 
+        public async Task<Game> GetGame(Guid gameId)
+        {
+            return Games.FirstOrDefault(g => g.Id == gameId) ?? new NullGame();
+        }
+
         public async Task<Game> JoinOrCreateGame(Guid playerId)
         {
             var game = Games.FirstOrDefault(g => g.Players.PlayerOne.Id == Guid.Empty || g.Players.PlayerTwo.Id == Guid.Empty) ?? CreateNewGame();

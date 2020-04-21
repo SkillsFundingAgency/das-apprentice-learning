@@ -21,7 +21,7 @@ namespace DAS_Capture_The_Flag.Web.UnitTests.Controllers.Lobby
         }
 
         [Test]
-        public async Task ThenTheCorrectViewIsReturned()
+        public async Task ThenTheIndexViewIsReturned()
         {
             Mediator.Send(Arg.Any<JoinOrCreateGameCommand>()).Returns(new JoinOrCreateGameResponse(new Game()));
             

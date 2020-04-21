@@ -7,7 +7,6 @@ using DAS_Capture_The_Flag.Application.Handlers.UpdatePlayerReady;
 using DAS_Capture_The_Flag.Web.Models.Lobby;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace DAS_Capture_The_Flag.Controllers
 {
@@ -33,40 +32,41 @@ namespace DAS_Capture_The_Flag.Controllers
             }
             catch (ArgumentException exception)
             {
+                // [TODO] - log the exception 
+
                 return RedirectToAction("Index", "Error");
             } 
-        }
-
-        [HttpGet("/lobby/refresh")]
-        public async Task<string> Refresh(Guid gameId)
-        {
-            var game = await _mediator.Send(new GetGameRequest(gameId), CancellationToken.None);
-
-            return JsonConvert.SerializeObject(game);
         }
 
         [HttpGet("/lobby/update")]
         public async Task Ready(Guid gameId, Guid playerId) 
         { 
             await _mediator.Send(new UpdatePlayerReadyCommand(gameId, playerId), CancellationToken.None);
-         
         }
 
         [HttpGet("/lobby/lobbyDetails")]
         public async Task<IActionResult> LobbyDetails(Guid gameId, Guid playerId)
         {
             var game = await _mediator.Send(new GetGameRequest(gameId), CancellationToken.None);
+            
+            if (game.Id == Guid.Empty)
+            {
+                return RedirectToAction("Index", "Error");
+            }
 
-            if 
+            if (game.Players.PlayerOne.Ready && game.Players.PlayerTwo.Ready)
+            {
+                var redirect = new JsonResult(new { result = "RedirectToGame", url = Url.Action("Index", "Game", new { gameId, playerId }) });
+
+                redirect.ContentType = "RedirectResult";
+
+                return redirect;
+            }
+
             var viewModel = new LobbyDetailsViewModel(game, playerId);
 
             return PartialView(viewModel);
         }
 
-        //[HttpPost("/lobby/LobbyDetails")]
-        //public async Task Ready(LobbyDetailsViewModel viewModel)
-        //{
-        //    await _mediator.Send(new UpdatePlayerReadyCommand(viewModel.Game.Id, viewModel.Player.Id), CancellationToken.None);
-        //}
     }
 }

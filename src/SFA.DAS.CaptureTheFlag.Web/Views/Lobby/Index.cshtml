@@ -8,18 +8,14 @@
 
 <h1 class="govuk-heading-xl">Finding game</h1>
 
-
-
 <div id="lobby-details-partial">
-    <p> Loading .. </p>
+   
 </div>
-
-
 
 <script>
     window.setInterval(function () {
 
-        var url = "/lobby/LobbyDetails?gameId=" + '@Model.Id.ToString()' + "&playerId=" + '@Model.PlayerId.ToString()';
+    var url = "/lobby/LobbyDetails?gameId=" + '@Model.Id.ToString()' + "&playerId=" + '@Model.PlayerId.ToString()';
 
     var httpRequest = new XMLHttpRequest();
 
@@ -27,10 +23,14 @@
 
     httpRequest.send();
 
-    var response = httpRequest.response
-    console.log(response)
+    if (httpRequest.getResponseHeader('content-type') == 'RedirectResult')
+    {
+        var response = JSON.parse(httpRequest.response)
 
-    document.getElementById("lobby-details-partial").innerHTML = response;
+        window.location = response.url
+    }
+  
+    document.getElementById("lobby-details-partial").innerHTML = httpRequest.response;
 }, 1500);
 </script>
 <script type="text/javascript" src="~/js/Lobby.js"></script>

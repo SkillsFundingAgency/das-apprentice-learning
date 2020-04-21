@@ -26,7 +26,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.JoinOrCreateGame
         [Test]
         public async Task And_AGamesExistWithASpace_Then_ANewGameIsNotCreated()
         {
-            Repository.Games = CreateTestLobbyWithOneGameAndOnePlayer();
+            Repository.Games = CreateTestLobbyWithOneGameAndOnePlayerWaitingForAnOpponent();
 
             var handler = new JoinOrCreateGameHandler(Repository);
 
@@ -38,7 +38,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.JoinOrCreateGame
         [Test]
         public async Task And_APlayerIsAlreadyInTheLobby_Then_APlayersIdIsAdded()
         {
-            Repository.Games = CreateTestLobbyWithOneGameAndOnePlayer();
+            Repository.Games = CreateTestLobbyWithOneGameAndOnePlayerWaitingForAnOpponent();
 
             var handler = new JoinOrCreateGameHandler(Repository);
 
@@ -51,7 +51,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.JoinOrCreateGame
         [Test]
         public async Task AndThePlayerIsJoiningAnExistingGame_ThenPlayersConnectedPropertySetToTrue()
         {
-            Repository.Games = CreateTestLobbyWithOneGameAndOnePlayer();
+            Repository.Games = CreateTestLobbyWithOneGameAndOnePlayerWaitingForAnOpponent();
 
             var handler = new JoinOrCreateGameHandler(Repository);
 

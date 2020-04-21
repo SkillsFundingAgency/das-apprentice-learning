@@ -13,12 +13,7 @@ namespace DAS_Capture_The_Flag.Web.Models.Lobby
         public Player Player { get; set; }
         public Player Opponent { get; set; }
 
-        public LobbyDetailsViewModel()
-        {
-
-        }
-
-        public LobbyDetailsViewModel(Application.Models.GameModels.Game game, Guid playerId)
+        public LobbyDetailsViewModel(Game game, Guid playerId)
         {
             Game = game;
             PlayersConnected = game.PlayersConnected;

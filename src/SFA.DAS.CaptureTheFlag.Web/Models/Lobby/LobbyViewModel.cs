@@ -7,18 +7,23 @@ namespace DAS_Capture_The_Flag.Web.Models.Lobby
     {
         public Guid Id { get; set; }
         public Guid PlayerId { get; set; }
-
-        public LobbyViewModel() { }
-
-        public LobbyViewModel(Application.Models.GameModels.Game game, Guid playerId)
+        
+        public LobbyViewModel(Game game, Guid playerId)
         {
             if (game == null)
             {
                 throw new ArgumentException();
             }
+            if (game.Id == Guid.Empty)
+            {
+                throw new ArgumentException("Game not found");
+            }
+            if (playerId == Guid.Empty)
+            {
+                throw new ArgumentException("Player id does not exist");
+            }
 
             Id = game.Id;
-           
             PlayerId = playerId;
         }
     }

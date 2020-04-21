@@ -1,7 +1,5 @@
 ﻿'use strict'
 
-
-
 function UpdatePlayerReady(Id, PlayerId) {
     var url = "/lobby/update?gameId=" + Id + "&playerId=" + PlayerId
 
@@ -11,9 +9,6 @@ function UpdatePlayerReady(Id, PlayerId) {
 
     httpRequest.send();
 
-    //var response = JSON.parse(httpRequest.responseText) 
-
-    //UpdateLobby(response)
 }
 
 

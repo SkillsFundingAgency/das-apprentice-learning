@@ -15,7 +15,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.GetGame
         [Test]
         public async Task WhenRequestingAGame_ThenTheGameThatThePlayerIsReturned()
         {
-            Repository.Games = CreateTwoGames();
+            Repository.Games = CreateTwoTestGames();
 
             var handler = new GetGameHandler(Repository);
 
@@ -25,7 +25,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.GetGame
 
         }
 
-        private List<Game> CreateTwoGames()
+        private List<Game> CreateTwoTestGames()
         {
             return new List<Game> { 
                 new Game { Id = IncorrectGameId, Players = { PlayerOne = new Player(), PlayerTwo = new Player { Id = PlayerId_2} } } ,

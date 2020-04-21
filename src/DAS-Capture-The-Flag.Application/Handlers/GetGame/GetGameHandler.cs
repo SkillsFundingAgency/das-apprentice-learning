@@ -18,7 +18,7 @@ namespace DAS_Capture_The_Flag.Application.Handlers.GetGame
 
         public async Task<Game> Handle(GetGameRequest request, CancellationToken cancellationToken)
         {
-            return _repository.Games.FirstOrDefault(g => g.Id == request.Id);
+            return await _repository.GetGame(request.Id);
         }
     }
 }
