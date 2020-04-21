@@ -1,7 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Home Page";
+
+    var user = await UserManager.GetUserAsync(User); 
 }
 
 <div class="govuk-main-wrapper">
@@ -11,9 +14,7 @@
 
             @if (SignInManager.IsSignedIn(User))
             {
-                <form action="/Game/FindGame" method="get">
-                    <button class="govuk-button" type="submit">Find a new game</button>
-                </form>
+                <a class="govuk-button" asp-controller="Lobby" asp-action="Index" asp-route-playerId="@user.Id">> Find a new game</a>
             }
             else
             {

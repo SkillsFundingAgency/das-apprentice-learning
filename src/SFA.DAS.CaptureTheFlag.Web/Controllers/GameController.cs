@@ -18,11 +18,6 @@ namespace DAS_Capture_The_Flag.Controllers
             _mediator = mediator;
         }
 
-        public IActionResult FindGame()
-        {
-            return View();
-        }
-
         [HttpGet]
         public async Task<IActionResult> Index(Guid gameId, Guid playerId)
         {

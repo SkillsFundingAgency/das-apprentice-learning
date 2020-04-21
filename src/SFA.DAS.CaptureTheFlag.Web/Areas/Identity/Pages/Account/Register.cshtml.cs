@@ -82,7 +82,8 @@ namespace DAS_Capture_The_Flag.Areas.Identity.Pages.Account
                 var user = new IdentityUser
                 {
                     UserName = Input.UserName, 
-                    Email = Input.Email
+                    Email = Input.Email,
+                    Id = Guid.NewGuid().ToString()
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
