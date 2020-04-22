@@ -12,11 +12,11 @@ namespace DAS_Capture_The_Flag.Web.Models.Lobby
         {
             if (game == null)
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Game was not found or created");
             }
             if (game.Id == Guid.Empty)
             {
-                throw new ArgumentException("Game not found");
+                throw new ArgumentException("Game could not be joined");
             }
             if (playerId == Guid.Empty)
             {

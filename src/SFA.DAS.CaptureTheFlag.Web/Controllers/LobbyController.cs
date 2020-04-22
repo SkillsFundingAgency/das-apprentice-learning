@@ -7,16 +7,19 @@ using DAS_Capture_The_Flag.Application.Handlers.UpdatePlayerReady;
 using DAS_Capture_The_Flag.Web.Models.Lobby;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DAS_Capture_The_Flag.Controllers
 {
     public class LobbyController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<LobbyController> _logger;
 
-        public LobbyController(IMediator mediator)
+        public LobbyController(IMediator mediator, ILogger<LobbyController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet("/lobby")]
@@ -32,7 +35,7 @@ namespace DAS_Capture_The_Flag.Controllers
             }
             catch (ArgumentException exception)
             {
-                // [TODO] - log the exception 
+                _logger.LogError($"{exception.Message} for PlayerId: {playerId}. JoinOrCreateGameResponse = {response}");
 
                 return RedirectToAction("Index", "Error");
             } 

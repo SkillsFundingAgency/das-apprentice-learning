@@ -13,7 +13,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.GetGame
     {
 
         [Test]
-        public async Task WhenRequestingAGame_ThenTheGameThatThePlayerIsReturned()
+        public async Task WhenRequestingAGame_ThenTheGameThatThePlayerIsInIsReturned()
         {
             Repository.Games = CreateTwoTestGames();
 
@@ -22,7 +22,6 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.GetGame
             var result = await handler.Handle(new GetGameRequest(CorrectGameId), CancellationToken.None);
 
             result.Players.PlayerOne.Id.Should().Be(PlayerId_1);
-
         }
 
         private List<Game> CreateTwoTestGames()

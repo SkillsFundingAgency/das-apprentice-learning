@@ -12,12 +12,12 @@ namespace DAS_Capture_The_Flag.Web.UnitTests.Controllers.Lobby
     [TestFixture]
     public class WhenRequestingTheLobbyIndexPage : LobbyTestBase
     {
-        private LobbyController sut;
+        private LobbyController LobbyController;
 
         [SetUp]
         public void Arrange()
         {
-            sut = new LobbyController(Mediator);
+            LobbyController = new LobbyController(Mediator, Logger);
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace DAS_Capture_The_Flag.Web.UnitTests.Controllers.Lobby
         {
             Mediator.Send(Arg.Any<JoinOrCreateGameCommand>()).Returns(new JoinOrCreateGameResponse(new Game()));
             
-            var result = await sut.Index(PlayerId_1);
+            var result = await LobbyController.Index(PlayerId_1);
 
             result.Should().BeOfType<ViewResult>();
         }
@@ -35,7 +35,7 @@ namespace DAS_Capture_The_Flag.Web.UnitTests.Controllers.Lobby
         {
             Mediator.Send(Arg.Any<JoinOrCreateGameCommand>()).Returns(new JoinOrCreateGameResponse(null));
 
-            var result = await sut.Index(PlayerId_1);
+            var result = await LobbyController.Index(PlayerId_1);
 
             result.Should().BeOfType<RedirectToActionResult>();
             result.As<RedirectToActionResult>().ControllerName.Should().Be("Error");

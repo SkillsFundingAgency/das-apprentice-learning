@@ -12,9 +12,10 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.UpdatePlayerReady
     {
        
         [Test]
-        public async Task Then_TheirConnectedStatusIsUpdatedToReady()
+        public async Task Then_TheirReadyStatusIsUpdatedToReady()
         {
-            Repository.Games = CreateTestLobbyWithOneGameTwoPlayers_BothNotReady();
+            
+            Repository.Games = CreateTestLobbyWithOneGameTwoPlayers_WhereBothPlayersAreNotReady();
 
             var handler = new UpdatePlayerReadyHandler(Repository);
 

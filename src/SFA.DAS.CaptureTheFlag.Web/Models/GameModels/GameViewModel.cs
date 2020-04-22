@@ -10,11 +10,6 @@ namespace DAS_Capture_The_Flag.Web.Models.GameModels
         public Game Game { get; set; }
         public GameViewModel(Game game, Guid playerId)
         {
-            if (game == null)
-            {
-                throw new ArgumentException();
-            }
-
             if (game.Id == Guid.Empty)
             {
                 throw new ArgumentException("Game was not found");

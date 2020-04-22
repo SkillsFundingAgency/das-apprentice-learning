@@ -73,5 +73,4 @@ namespace DAS_Capture_The_Flag.Application.Repositories.GameRepository
             return game;
         }
     }
-
 }

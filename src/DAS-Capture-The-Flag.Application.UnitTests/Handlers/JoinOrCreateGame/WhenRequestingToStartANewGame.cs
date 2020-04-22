@@ -59,7 +59,5 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.JoinOrCreateGame
 
             Repository.Games[0].PlayersConnected.Should().Be(true);
         }
-
-       
     }
 }

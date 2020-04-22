@@ -1,10 +1,9 @@
 ﻿using DAS_Capture_The_Flag.Application.Repositories.GameRepository;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using NSubstitute;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DAS_Capture_The_Flag.Web.UnitTests.Controllers.Lobby
 {
@@ -12,6 +11,7 @@ namespace DAS_Capture_The_Flag.Web.UnitTests.Controllers.Lobby
     {
         protected IGameRepository Repository;
         protected IMediator Mediator;
+        protected ILogger Logger;
 
         protected Guid PlayerId_1 = Guid.NewGuid();
         protected Guid PlayerId_2 = Guid.NewGuid();
@@ -22,6 +22,7 @@ namespace DAS_Capture_The_Flag.Web.UnitTests.Controllers.Lobby
         {
             Repository = Substitute.For<IGameRepository>();
             Mediator = Substitute.For<IMediator>();
+            Logger = Substitute.For<ILogger>();
         }
     }
 }
