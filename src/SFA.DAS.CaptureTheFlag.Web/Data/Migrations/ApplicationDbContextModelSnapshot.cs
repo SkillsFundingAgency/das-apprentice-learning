@@ -19,6 +19,27 @@ namespace DAS_Capture_The_Flag.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("DAS_Capture_The_Flag.Models.Settings.SettingsModel", b =>
+                {
+                    b.Property<int>("SettingsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("GraphicsDetail")
+                        .HasColumnType("string");
+
+                    b.Property<int>("MusicVolume")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SoundEffectsVolume")
+                        .HasColumnType("int");
+
+                    b.HasKey("SettingsId");
+
+                    b.ToTable("Settings");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")

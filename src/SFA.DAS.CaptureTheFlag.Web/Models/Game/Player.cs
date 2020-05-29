@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DAS_Capture_The_Flag.Areas.Identity.Pages.Account;
 
 namespace DAS_Capture_The_Flag.Models.Game
 {

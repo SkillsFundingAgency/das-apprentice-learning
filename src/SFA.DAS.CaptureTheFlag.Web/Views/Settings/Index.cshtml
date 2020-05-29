@@ -1,44 +1,96 @@
-﻿@model SettingsModel
+﻿@using DAS_Capture_The_Flag.Models.Settings
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@model DAS_Capture_The_Flag.Models.Settings.SettingsModel
 @{
     Layout = "_Layout";
+    ViewData["Title"] = "Game Settings";
 }
 
-<h1>Account Settings</h1>
-<br />
-<br />
-<br />
+<div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="heading-xlarge">@ViewData["Title"]</h1>
 
-<h1>Game Settings</h1>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                @using (Html.BeginForm("Post", "Settings", FormMethod.Post))
+                {
+                    <h3 class="govuk-heading-m">Music Volume</h3>
+                    <span>
+                        @Html.TextBoxFor(model => model.MusicVolume)
+                    </span>
+                    <br />
 
-@using (Html.BeginForm("Post", "Settings", FormMethod.Post))
-{
-    <h3>Music Volume</h3>
-    <span>
-        @Html.TextBoxFor(model => model.MusicVolume)
-    </span>
-    <br />
+                    <h3 class="govuk-heading-m">Sound Effects Volume</h3>
+                    <span>
+                        @Html.TextBoxFor(model => model.SoundEffectsVolume)
+                    </span>
+                    <br />
 
-    <h3>Sound Effects Volume</h3>
-    <span>
-        @Html.TextBoxFor(model => model.SoundEffectsVolume)
-    </span>
-    <br />
+                    <h3 class="govuk-heading-m">Game Graphics</h3>
+                    <span>
+                        @*@Html.DropDownListFor(model => model.GraphicsDetail, new SelectList(Enum.GetValues(typeof(Graphics))))*@
+                        @Html.TextBoxFor(model => model.GraphicsDetail)
+                    </span>
+                    <br />
+                    <br />
 
-    <h3>Game Graphics</h3>
-    <span>
-        @Html.DropDownListFor(model => model.GraphicsDetail, new SelectList(Enum.GetValues(typeof(Graphics))))
-    </span>
-    <br />
-    <br />
+                    <button type="submit">Save</button>
+                    // Reset defaults only works before data is posted/saved.
+                    <button type="reset">Reset to Game Defaults</button>
+                    <br />
+                    <br />
 
-    <button type="submit">Save</button>
-    // Reset defaults only works before data is posted/saved.
-    <button type="reset">Reset to Game Defaults</button>
-    <br />
-    <br />
+                    <a asp-area="" asp-controller="Home" asp-action="Index">Return to Game</a>
+                    <br />
+                    <br />
+                }
+            }
 
-    <a asp-area="" asp-controller="Home" asp-action="Index">Return to Game</a>
-    <br />
-    <br />
-}
+            else
+            {
+                <p>
+                    <a asp-area="Identity" asp-page="/Account/Login"
+                       id="loginLink" title="Sign in"><i class="fa fa-sign-in"></i>Log in </a> or
+                    <a asp-area="Identity" asp-page="/Account/Register"
+                       id="registerLink" title="Create account"><i class="fa fa-sign-in"></i>Register</a> to start a new game.
+                </p>
+            }
+        </div>
+    </div>
+</div>
+
+
+            @*@using (Html.BeginForm("Post", "Settings", FormMethod.Post))
+            {
+                <h3>Music Volume</h3>
+                <span>
+                    @Html.TextBoxFor(model => model.MusicVolume)
+                </span>
+                <br />
+
+                <h3>Sound Effects Volume</h3>
+                <span>
+                    @Html.TextBoxFor(model => model.SoundEffectsVolume)
+                </span>
+                <br />
+
+                <h3>Game Graphics</h3>
+                <span>
+                    @Html.DropDownListFor(model => model.GraphicsDetail, new SelectList(Enum.GetValues(typeof(Graphics))))
+                </span>
+                <br />
+                <br />
+
+                <button type="submit">Save</button>
+                // Reset defaults only works before data is posted/saved.
+                <button type="reset">Reset to Game Defaults</button>
+                <br />
+                <br />
+
+                <a asp-area="" asp-controller="Home" asp-action="Index">Return to Game</a>
+                <br />
+                <br />
+            }*@
 
