@@ -9,6 +9,7 @@ using DAS_Capture_The_Flag.Hubs;
 using DAS_Capture_The_Flag.Models.Game;
 using Microsoft.EntityFrameworkCore;
 using DAS_Capture_The_Flag.Data;
+using DAS_Capture_The_Flag.Services;
 
 namespace DAS_Capture_The_Flag
 {
@@ -34,6 +35,7 @@ namespace DAS_Capture_The_Flag
             services.AddSingleton<IGameRepository>(new GameRepository());
             services.AddSignalR();
             services.AddRazorPages();
+            services.AddScoped<IForumService, ForumService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

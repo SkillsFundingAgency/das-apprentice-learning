@@ -1,0 +1,30 @@
+﻿@model DAS_Capture_The_Flag.Models.Forum.ForumIndexModel
+
+<div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <h1 class="govuk-heading-xl">Forum</h1>
+
+        <a class="govuk-link" asp-action="Index" asp-controller="Home">
+            <h1 class="govuk-heading-s">Return to Capture the Flag</h1>
+        </a>
+        <p></p>
+
+        <table style="width: 100%">
+            <tr>
+                <th>Topic</th>
+                <th>Posts</th>
+            </tr>
+            @foreach (var forum in Model.ForumList)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
+                            @forum.Name
+                        </a>
+                    </td>
+                    <td>@forum.Description</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

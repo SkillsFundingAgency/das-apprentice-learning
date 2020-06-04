@@ -9,29 +9,31 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAS_Capture_The_Flag.Services
 {
-    public class ForumService : IForum
+    public class ForumService : IForumService
     {
         // Pass an instant of our dbContext
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _db;
 
-        public ForumService(ApplicationDbContext context)
+        public ForumService(ApplicationDbContext db)
         {
-            _context = context;
+            _db = db;
         }
 
-        public Task Create(ForumIndex forum)
+        public void Create(Forum forum)
         {
-            throw new NotImplementedException();
+            _db.Forums.Add(forum);
+            _db.SaveChanges();
         }
 
-        public Task Delete(int forumId)
+        public void Delete(int forumId)
         {
-            throw new NotImplementedException();
+            var topic = _db.Forums.Find(forumId);
+            _db.Forums.Remove(topic);
         }
 
-        public IEnumerable<ForumIndex> GetAll() // returns instance of forum from our database
+        public IEnumerable<Forum> GetAll() // returns instance of forum from our database
         {
-            return _context.Forums.Include(f => f.Posts);
+            return _db.Forums.Include(f => f.Posts);
         }
 
         public IEnumerable<IdentityUser> GetAllActiveUsers()
@@ -39,13 +41,28 @@ namespace DAS_Capture_The_Flag.Services
             throw new NotImplementedException();
         }
 
-        public ForumIndex GetById(int id)
+        public Forum GetById(int id)
         {
-            throw new NotImplementedException();
+            // Give the first forum that corresponds to where clause: primary key should return single result.
+            // Look for all forums
+            // Where clause using linq. Specify forum id is equals to the id we pass.
+            var forum = _db.Forums.Where(f => f.Id == id)
+                // Include posts here too, loading the posts now too
+                // The posts have navigation properties too, such as the user, so ThenInclude
+                .Include(f => f.Posts).ThenInclude(p => p.User)
+                // Include posts here too, loading the posts again in order to get replies from those posts
+                // The posts have navigation properties too, such as the user, so ThenInclude
+                .Include(f => f.Posts).ThenInclude(p => p.Replies)
+                // Replies have a navigation of user who made a reply, so ThenInclude here
+                .ThenInclude(r => r.User)
+                // Return the first or default and then call return.
+                .FirstOrDefault();
+            return forum;
         }
 
         public Task UpdateForumDescription(int forumId, string newDescription)
         {
+
             throw new NotImplementedException();
         }
 

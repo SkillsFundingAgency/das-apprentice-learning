@@ -15,7 +15,7 @@ namespace DAS_Capture_The_Flag.Data
         }
 
         // Forum
-        public DbSet<ForumIndex> Forums { get; set; }
+        public DbSet<Forum> Forums { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostReply> PostReplies { get; set; }
 

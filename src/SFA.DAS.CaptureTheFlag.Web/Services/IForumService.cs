@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using DAS_Capture_The_Flag.Models.Forum;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.WebEncoders.Testing;
 
 namespace DAS_Capture_The_Flag.Services
 {
-    public interface IForum
+    public interface IForumService
     {
-        ForumIndex GetById(int id);
-        IEnumerable<ForumIndex> GetAll();
+        Forum GetById(int id);
+        IEnumerable<Forum> GetAll();
         IEnumerable<IdentityUser> GetAllActiveUsers();
 
-        Task Create(ForumIndex forum);
-        Task Delete(int forumId);
+        void Create(Forum forum);
+        void Delete(int forumId);
         Task UpdateForumTitle(int forumId, string newTitle);
         Task UpdateForumDescription(int forumId, string newDescription);
     }
