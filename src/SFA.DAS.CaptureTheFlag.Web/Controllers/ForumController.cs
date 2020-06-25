@@ -40,24 +40,43 @@ namespace DAS_Capture_The_Flag.Controllers
         public IActionResult Topic(int id)
         {
             var forum = _forumService.GetById(id);
-            var posts = _postService.GetPostsByForum(id);
+            var posts = forum.Posts;
 
             var postListings = posts.Select(post => new PostListingModel
             {
                 Id = post.Id,
                 AuthorId = post.User.Id,
+                //AuthorRating = post.User.Rating,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count(),
                 Forum = BuildForumListing(post)
             });
 
-            throw new NotImplementedException();
+            var model = new ForumTopicModel
+            {
+                Posts = postListings,
+                Forum = BuildForumListing(forum)
+            };
+
+            return View();
         }
 
         private ForumListingModel BuildForumListing(Post post)
         {
-            throw new NotImplementedException();
+            var forum = post.Forum;
+            return BuildForumListing(forum);
+        }
+
+        private ForumListingModel BuildForumListing(Forum forum)
+        {
+            return new ForumListingModel
+            {
+                Id = forum.Id,
+                Name = forum.Title,
+                Description = forum.Description,
+                ImageUrl = forum.ImageUrl
+            };
         }
     }
 }

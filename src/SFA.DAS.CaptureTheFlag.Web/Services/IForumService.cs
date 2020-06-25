@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DAS_Capture_The_Flag.Data;
 using DAS_Capture_The_Flag.Models.Forum;
 using Microsoft.AspNetCore.Identity;
 
@@ -10,7 +11,8 @@ namespace DAS_Capture_The_Flag.Services
     {
         Forum GetById(int id);
         IEnumerable<Forum> GetAll();
-        IEnumerable<IdentityUser> GetAllActiveUsers();
+        //IEnumerable<IdentityUser> GetAllActiveUsers();
+        IEnumerable<ApplicationUser> GetAllActiveUsers();
 
         void Create(Forum forum);
         void Delete(int forumId);

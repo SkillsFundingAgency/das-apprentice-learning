@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DAS_Capture_The_Flag.Data.Migrations
 {
-    public partial class removeUnusedColumns : Migration
+    public partial class resetApplicationUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,10 +18,25 @@ namespace DAS_Capture_The_Flag.Data.Migrations
             migrationBuilder.DropColumn(
                 name: "LastTopicTitle",
                 table: "Forums");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Title",
+                table: "Posts",
+                nullable: true,
+                oldClrType: typeof(int),
+                oldType: "int");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterColumn<int>(
+                name: "Title",
+                table: "Posts",
+                type: "int",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldNullable: true);
+
             migrationBuilder.AddColumn<DateTime>(
                 name: "LastPostDate",
                 table: "Forums",

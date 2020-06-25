@@ -1,6 +1,9 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+﻿@using DAS_Capture_The_Flag.Data
+@using Microsoft.AspNetCore.Identity
+@*@inject SignInManager<IdentityUser> SignInManager
+    @inject UserManager<IdentityUser> UserManager*@
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 
 @if (SignInManager.IsSignedIn(User))
@@ -18,11 +21,11 @@
 }
 else
 {
-<div id="bannerSignedOut">
-    <a asp-area="Identity" asp-page="/Account/Login"
-       id="loginLink" title="Sign in"><i class="fa fa-sign-in"></i>Log in / </a>
-    <a asp-area="Identity" asp-page="/Account/Register"
-       id="registerLink" title="Create account"><i class="fa fa-sign-in"></i>Create account</a>
-</div>
+    <div id="bannerSignedOut">
+        <a asp-area="Identity" asp-page="/Account/Login"
+           id="loginLink" title="Sign in"><i class="fa fa-sign-in"></i>Log in / </a>
+        <a asp-area="Identity" asp-page="/Account/Register"
+           id="registerLink" title="Create account"><i class="fa fa-sign-in"></i>Create account</a>
+    </div>
 }
 

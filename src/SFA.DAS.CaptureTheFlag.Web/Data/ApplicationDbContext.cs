@@ -1,13 +1,11 @@
-﻿
-using System;
-using DAS_Capture_The_Flag.Models;
+﻿using DAS_Capture_The_Flag.Models;
 using DAS_Capture_The_Flag.Models.Forum;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAS_Capture_The_Flag.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

@@ -1,4 +1,5 @@
 using System;
+using DAS_Capture_The_Flag.Areas.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +10,7 @@ using DAS_Capture_The_Flag.Hubs;
 using DAS_Capture_The_Flag.Models.Game;
 using Microsoft.EntityFrameworkCore;
 using DAS_Capture_The_Flag.Data;
+using DAS_Capture_The_Flag.Models;
 using DAS_Capture_The_Flag.Services;
 
 namespace DAS_Capture_The_Flag
@@ -28,7 +30,11 @@ namespace DAS_Capture_The_Flag
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("GameDbConnection")));
-            services.AddDefaultIdentity<IdentityUser>(
+
+            //services.AddDefaultIdentity<IdentityUser>(
+            //        options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<ApplicationUser>(
                     options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();

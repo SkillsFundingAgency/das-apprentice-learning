@@ -36,7 +36,8 @@ namespace DAS_Capture_The_Flag.Services
             return _db.Forums.Include(f => f.Posts);
         }
 
-        public IEnumerable<IdentityUser> GetAllActiveUsers()
+        //public IEnumerable<IdentityUser> GetAllActiveUsers()
+        public IEnumerable<ApplicationUser> GetAllActiveUsers()
         {
             throw new NotImplementedException();
         }
