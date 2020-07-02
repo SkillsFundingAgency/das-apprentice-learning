@@ -1,10 +1,13 @@
-﻿using DAS_Capture_The_Flag.Hubs;
+﻿
+using DAS_Capture_The_Flag.Hubs;
+using System;
 using System.Collections.Generic;
 
 namespace DAS_Capture_The_Flag.Models.Game
 {
     public class Soldier
     {
+        public Guid Id { get; } = Guid.NewGuid();
         public int xPos { get; set; }
         public int yPos { get; set; }
         public int Player { get; set; }
@@ -19,4 +22,6 @@ namespace DAS_Capture_The_Flag.Models.Game
             PotentialMoves = new List<Coordinates>();
         }
     }
+
+
 }

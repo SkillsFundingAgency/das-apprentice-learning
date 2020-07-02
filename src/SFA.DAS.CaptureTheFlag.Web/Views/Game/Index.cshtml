@@ -1,21 +1,11 @@
-﻿@model DAS_Capture_The_Flag.Models.Game.GameViewModel
-@using DAS_Capture_The_Flag.ViewModels
+﻿@model DAS_Capture_The_Flag.Web.Models.GameModels.GameViewModel
+@using DAS_Capture_The_Flag.Components
 @using Newtonsoft.Json;
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@(await Html.RenderComponentAsync<GameWindow>(RenderMode.ServerPrerendered, new { GameId = Model.Game.Id, PlayerId = Model.PlayerId }))
 
-<canvas id="GameWindow" width="500" height="500"></canvas>
-
+<script src="_framework/blazor.server.js"></script>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script>
-    var game = @JavaScriptConvert.SerializeObject(Model);
-    console.log(game)
-   
-    
-</script>
-<script src="~/js/game.js">
-</script>
-<script src="~/js/Game/DrawMap.js"></script>

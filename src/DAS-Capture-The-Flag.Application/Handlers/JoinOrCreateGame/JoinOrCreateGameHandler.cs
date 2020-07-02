@@ -17,7 +17,7 @@ namespace DAS_Capture_The_Flag.Application.Handlers.JoinOrCreateGame
 
         public async Task<JoinOrCreateGameResponse> Handle(JoinOrCreateGameCommand request, CancellationToken cancellationToken)
         {
-            var game = await _repository.JoinOrCreateGame(request.PlayerId);
+            var game = await _repository.JoinOrCreateGame(request.Player);
            
             return new JoinOrCreateGameResponse(game); 
         }

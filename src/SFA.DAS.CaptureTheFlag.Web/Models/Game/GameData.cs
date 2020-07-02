@@ -18,8 +18,8 @@ namespace DAS_Capture_The_Flag.Models.Game
 
         public GameData()
         {
-            Soldiers = new List<Soldier>() { new Soldier(1, 0, 0) , new Soldier(2, 9, 9) };
-            ChosenMap = new int[10, 10]
+            Soldiers = new List<Soldier> { new Soldier(1, 0, 0) , new Soldier(2, 9, 9) };
+            ChosenMap = new int[,]
                                     {
                                         { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
                                         { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },

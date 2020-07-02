@@ -1,5 +1,5 @@
 ﻿@model DAS_Capture_The_Flag.Web.Models.Lobby.LobbyViewModel;
-
+@using DAS_Capture_The_Flag.Components.Lobby;
 @{
     ViewData["Title"] = "Index";
 }
@@ -8,29 +8,7 @@
 
 <h1 class="govuk-heading-xl">Finding game</h1>
 
-<div id="lobby-details-partial">
-   
-</div>
+@(await Html.RenderComponentAsync<Lobby>(RenderMode.ServerPrerendered, new { GameId = Model.Id, PlayerId = Model.PlayerId }))
 
-<script>
-    window.setInterval(function () {
-
-    var url = "/lobby/LobbyDetails?gameId=" + '@Model.Id.ToString()' + "&playerId=" + '@Model.PlayerId.ToString()';
-
-    var httpRequest = new XMLHttpRequest();
-
-    httpRequest.open("GET", url, false);
-
-    httpRequest.send();
-
-    if (httpRequest.getResponseHeader('content-type') == 'RedirectResult')
-    {
-        var response = JSON.parse(httpRequest.response)
-
-        window.location = response.url
-    }
-  
-    document.getElementById("lobby-details-partial").innerHTML = httpRequest.response;
-}, 1500);
-</script>
-<script type="text/javascript" src="~/js/Lobby.js"></script>
+<script src="_framework/blazor.server.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>

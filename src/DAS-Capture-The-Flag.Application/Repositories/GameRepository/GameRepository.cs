@@ -20,24 +20,24 @@ namespace DAS_Capture_The_Flag.Application.Repositories.GameRepository
             return Games.FirstOrDefault(g => g.Id == gameId) ?? new NullGame();
         }
 
-        public async Task<Game> JoinOrCreateGame(Guid playerId)
+        public async Task<Game> JoinOrCreateGame(Player player)
         {
             var game = Games.FirstOrDefault(g => g.Players.PlayerOne.Id == Guid.Empty || g.Players.PlayerTwo.Id == Guid.Empty) ?? CreateNewGame();
-
-            return await AddPlayerToGame(game, playerId);
+          
+            return await AddPlayerToGame(game, player);
         }
       
-        public async Task<Game> AddPlayerToGame(Game game, Guid playerId)
+        public async Task<Game> AddPlayerToGame(Game game, Player player)
         {
             var players = game.Players;
-
+            
             if (players.PlayerOne.Id == Guid.Empty)
             {
-                players.PlayerOne.Id = playerId;
+                players.PlayerOne = player;
             }
             else
             {
-                players.PlayerTwo.Id = playerId;
+                players.PlayerTwo = player;
             }
 
             if (players.PlayerOne.Id != Guid.Empty && players.PlayerTwo.Id != Guid.Empty)
@@ -72,5 +72,6 @@ namespace DAS_Capture_The_Flag.Application.Repositories.GameRepository
 
             return game;
         }
+
     }
 }

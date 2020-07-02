@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAS-Capture-The-Flag.Web", "SFA.DAS.CaptureTheFlag.Web\DAS-Capture-The-Flag.Web.csproj", "{F3FA2D88-5BE0-4AC8-8800-C6805BEFD7EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAS-Capture-The-Flag.Web.UnitTests", "DAS-Capture-The-Flag.Web.UnitTests\DAS-Capture-The-Flag.Web.UnitTests.csproj", "{68E5FB47-B757-4B54-BD83-9050BFA41D41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAS-Capture-The-Flag.Web.UnitTests", "DAS-Capture-The-Flag.Web.UnitTests\DAS-Capture-The-Flag.Web.UnitTests.csproj", "{68E5FB47-B757-4B54-BD83-9050BFA41D41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAS-Capture-The-Flag.Application", "DAS-Capture-The-Flag.Application\DAS-Capture-The-Flag.Application.csproj", "{B6AEE04E-2328-4210-800D-81D7265443C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAS-Capture-The-Flag.Application", "DAS-Capture-The-Flag.Application\DAS-Capture-The-Flag.Application.csproj", "{B6AEE04E-2328-4210-800D-81D7265443C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAS-Capture-The-Flag.Application.UnitTests", "DAS-Capture-The-Flag.Application.UnitTests\DAS-Capture-The-Flag.Application.UnitTests.csproj", "{E0E9F14F-6401-41D8-8C47-4E88D7C9268D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAS-Capture-The-Flag.Application.UnitTests", "DAS-Capture-The-Flag.Application.UnitTests\DAS-Capture-The-Flag.Application.UnitTests.csproj", "{E0E9F14F-6401-41D8-8C47-4E88D7C9268D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
