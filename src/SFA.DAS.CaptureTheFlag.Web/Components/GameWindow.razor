@@ -1,0 +1,25 @@
+﻿@page "/"
+@inherits GameWindowComponent
+
+<div class="map">
+
+    @for (var y = 0; y < Game.Data.ChosenMap.Length; y++)
+    {
+        <div class="row">
+          
+            @for (var x = 0; x < Game.Data.ChosenMap[y].Length; x++)
+            {
+                var X = x;
+                var Y = y;
+                <div class="tile @Map.GetTileCSS(Game.Data.ChosenMap[y][x])" @onclick="@(() => ClickTile(X,Y))"></div>
+            }
+            
+        </div>
+    }
+    @foreach (var soldier in Game.Data.Soldiers)
+    {
+        <div class="soldier @(soldier.Selected && soldier.Player == PlayerNumber ? "soldier--selected" : "") @(soldier.Player == 1 ? "soldier-player-1" : "soldier-player-2")" style="--top : @(Map.GetScreenPosition(soldier.yPos))px; --left:@(Map.GetScreenPosition(soldier.xPos))px" @onclick="@(() => ClickSoldier(GameId, PlayerNumber, soldier.Id))"></div>
+    }
+</div>
+
+

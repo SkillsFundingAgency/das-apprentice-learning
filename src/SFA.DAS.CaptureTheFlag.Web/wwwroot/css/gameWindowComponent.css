@@ -1,0 +1,49 @@
+﻿
+.map {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.row {
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+.tile {
+    float: left;
+    height: 40px;
+    width: 40px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.tile-grass {
+    background-color: lightgreen;
+}
+
+.tile-wall {
+    background-color: grey;
+}
+
+.soldier {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    left: var(--left);
+    top: var(--top);
+}
+
+.soldier--selected {
+    border: 2px solid yellow;
+}
+
+.soldier-player-1 {
+    background-color: blue;
+}
+
+.soldier-player-2 {
+    background-color: red;
+}
+
