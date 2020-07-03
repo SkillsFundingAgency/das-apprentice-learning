@@ -32,7 +32,19 @@ namespace DAS_Capture_The_Flag.Areas.Identity.Pages.Account
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        [Required(ErrorMessage = "Enter your user name")]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
+        [BindProperty]
+        [Required(ErrorMessage = "Enter your password")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [BindProperty]
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
+
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
@@ -40,20 +52,6 @@ namespace DAS_Capture_The_Flag.Areas.Identity.Pages.Account
 
         [TempData]
         public string ErrorMessage { get; set; }
-
-        public class InputModel
-        {
-            [Required]
-            [Display(Name = "User Name")]
-            public string UserName { get; set; }
-
-            [Required]
-            [DataType(DataType.Password)]
-            public string Password { get; set; }
-
-            [Display(Name = "Remember me?")]
-            public bool RememberMe { get; set; }
-        }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
@@ -78,8 +76,8 @@ namespace DAS_Capture_The_Flag.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(Input.UserName,
-                    Input.Password, Input.RememberMe,
+                var result = await _signInManager.PasswordSignInAsync(UserName,
+                    Password, RememberMe,
                     lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
@@ -88,7 +86,7 @@ namespace DAS_Capture_The_Flag.Areas.Identity.Pages.Account
                 }
                 if (result.RequiresTwoFactor)
                 {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
+                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = RememberMe });
                 }
                 if (result.IsLockedOut)
                 {
