@@ -1,7 +1,6 @@
-﻿
-using DAS_Capture_The_Flag.Hubs;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace DAS_Capture_The_Flag.Models.Game
 {
@@ -12,16 +11,15 @@ namespace DAS_Capture_The_Flag.Models.Game
         public int yPos { get; set; }
         public int Player { get; set; }
         public bool Selected { get; set; }
-        public List<Coordinates> PotentialMoves { get; set; }
+        public List<Point> PotentialMoves { get; set; }
 
         public Soldier(int player, int xpos, int ypos)
         {
             Player = player;
             xPos = xpos;
             yPos = ypos;
-            PotentialMoves = new List<Coordinates>();
+            PotentialMoves = new List<Point>();
         }
     }
-
 
 }
