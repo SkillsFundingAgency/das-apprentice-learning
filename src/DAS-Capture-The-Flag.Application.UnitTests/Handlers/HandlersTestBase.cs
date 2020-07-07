@@ -11,8 +11,8 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers
     {
         protected IGameRepository Repository;
 
-        public Guid PlayerId_1 = Guid.NewGuid();
-        public Guid PlayerId_2 = Guid.NewGuid();
+        public Player Player_1 = new Player(Guid.NewGuid(), new PlayerDetails("Player One"));
+        public Player Player_2 = new Player(Guid.NewGuid(), new PlayerDetails("Player Two"));
         public Guid GameId = Guid.NewGuid();
         public Guid CorrectGameId = Guid.NewGuid();
         public Guid IncorrectGameId = Guid.NewGuid();
@@ -35,7 +35,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers
                 new Game()
                 {
                     Players = {
-                        PlayerOne = new Player() {  Id = PlayerId_1},
+                        PlayerOne = Player_1,
                         PlayerTwo = new Player()
                     }
                 }
@@ -52,10 +52,9 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers
                     PlayersConnected = true,
                     Players =
                     {
-                        PlayerOne = new Player() { Id = PlayerId_1, Ready = false },
-                        PlayerTwo = new Player() { Id = PlayerId_2, Ready = false }
+                        PlayerOne = Player_1,
+                        PlayerTwo = Player_2
                     }
-                    
                 }
             };
         }

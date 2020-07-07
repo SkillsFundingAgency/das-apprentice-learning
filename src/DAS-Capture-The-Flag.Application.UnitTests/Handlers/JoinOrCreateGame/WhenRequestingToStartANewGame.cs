@@ -18,7 +18,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.JoinOrCreateGame
 
             var handler = new JoinOrCreateGameHandler(Repository);
 
-            await handler.Handle(new JoinOrCreateGameCommand(PlayerId_1), CancellationToken.None);
+            await handler.Handle(new JoinOrCreateGameCommand(Player_1), CancellationToken.None);
 
             Repository.Games.Count.Should().Be(1);
         }
@@ -30,7 +30,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.JoinOrCreateGame
 
             var handler = new JoinOrCreateGameHandler(Repository);
 
-            await handler.Handle(new JoinOrCreateGameCommand(PlayerId_1), CancellationToken.None);
+            await handler.Handle(new JoinOrCreateGameCommand(Player_1), CancellationToken.None);
 
             Repository.Games.Count.Should().Be(1);
         }
@@ -42,9 +42,9 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.JoinOrCreateGame
 
             var handler = new JoinOrCreateGameHandler(Repository);
 
-            await handler.Handle(new JoinOrCreateGameCommand(PlayerId_2), CancellationToken.None);
+            await handler.Handle(new JoinOrCreateGameCommand(Player_2), CancellationToken.None);
 
-            Repository.Games[0].Players.PlayerTwo.Id.Should().Be(PlayerId_2);
+            Repository.Games[0].Players.PlayerTwo.Id.Should().Be(Player_2.Id);
 
         }
 
@@ -55,7 +55,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.JoinOrCreateGame
 
             var handler = new JoinOrCreateGameHandler(Repository);
 
-            await handler.Handle(new JoinOrCreateGameCommand(PlayerId_1), CancellationToken.None);
+            await handler.Handle(new JoinOrCreateGameCommand(Player_1), CancellationToken.None);
 
             Repository.Games[0].PlayersConnected.Should().Be(true);
         }
