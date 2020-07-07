@@ -7,6 +7,7 @@ using MediatR;
 using DAS_Capture_The_Flag.Application.Handlers.GetGame;
 using DAS_Capture_The_Flag.Application.Models.GameModels;
 using DAS_Capture_The_Flag.MapService;
+using Microsoft.Extensions.Configuration;
 
 namespace DAS_Capture_The_Flag.Components
 {
@@ -14,6 +15,7 @@ namespace DAS_Capture_The_Flag.Components
     {
         [Inject] public IMediator Mediator { get; set; }
         [Inject] public IMap Map { get; set; }
+        [Inject] public IConfiguration Configuration { get; set; }
 
         [Parameter] public Guid GameId {get;set;}
         [Parameter] public Guid PlayerId { get; set; }
@@ -29,9 +31,9 @@ namespace DAS_Capture_The_Flag.Components
             Game = await Mediator.Send(new GetGameRequest(GameId));
 
             PlayerNumber = GetPlayerNumber();
-          
+           
             _hubConnection = new HubConnectionBuilder()
-               .WithUrl("https://localhost:44353/gamehub")
+               .WithUrl(Configuration.GetValue<string>("GameHubConnectionUrl"))
                .Build();
 
             _hubConnection.On("UpdateGame", async () =>

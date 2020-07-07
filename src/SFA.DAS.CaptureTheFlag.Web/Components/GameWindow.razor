@@ -21,5 +21,3 @@
         <div class="soldier @(soldier.Selected && soldier.Player == PlayerNumber ? "soldier--selected" : "") @(soldier.Player == 1 ? "soldier-player-1" : "soldier-player-2")" style="--top : @(Map.GetScreenPosition(soldier.yPos))px; --left:@(Map.GetScreenPosition(soldier.xPos))px" @onclick="@(() => ClickSoldier(GameId, PlayerNumber, soldier.Id))"></div>
     }
 </div>
-
-
