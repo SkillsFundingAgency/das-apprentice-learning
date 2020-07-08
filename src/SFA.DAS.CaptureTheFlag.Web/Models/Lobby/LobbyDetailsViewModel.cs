@@ -1,14 +1,11 @@
-﻿using DAS_Capture_The_Flag.Application.Models.GameModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using DAS_Capture_The_Flag.Application.Models.GameModels;
 
 namespace DAS_Capture_The_Flag.Web.Models.Lobby
 {
     public class LobbyDetailsViewModel
     {
-        public Application.Models.GameModels.Game Game { get; set; }
+        public Game Game { get; set; }
         public bool PlayersConnected { get; set; }
         public Player Player { get; set; }
         public Player Opponent { get; set; }

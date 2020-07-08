@@ -19,7 +19,7 @@ namespace DAS_Capture_The_Flag.Application.UnitTests.Handlers.UpdatePlayerReady
 
             var handler = new UpdatePlayerReadyHandler(Repository);
 
-            await handler.Handle(new UpdatePlayerReadyCommand(GameId, PlayerId_1), CancellationToken.None);
+            await handler.Handle(new UpdatePlayerReadyCommand(GameId, Player_1.Id), CancellationToken.None);
 
             Repository.Games.FirstOrDefault(g => g.Id == GameId).Players.PlayerOne.Ready.Should().Be(true);
         }

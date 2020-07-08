@@ -11,6 +11,10 @@ using DAS_Capture_The_Flag.Application.Repositories.GameRepository;
 using DAS_Capture_The_Flag.Hubs;
 using MediatR;
 using DAS_Capture_The_Flag.Application.Handlers.JoinOrCreateGame;
+using Microsoft.AspNetCore.ResponseCompression;
+using System.Linq;
+using DAS_Capture_The_Flag.MapService;
+using DAS_Capture_The_Flag.Web.Handlers.GetPlayerDetails;
 
 namespace DAS_Capture_The_Flag
 {
@@ -36,7 +40,15 @@ namespace DAS_Capture_The_Flag
             services.AddSingleton<IGameRepository>(new GameRepository());
             services.AddSignalR();
             services.AddRazorPages();
+            services.AddServerSideBlazor();
             services.AddMediatR(typeof(JoinOrCreateGameHandler));
+            services.AddMediatR(typeof(GetPlayerDetailsHandler));
+            services.AddResponseCompression(opts =>
+            {
+                opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                    new[] { "application/octet-stream" });
+            });
+            services.AddSingleton<IMap>(new Map());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +78,9 @@ namespace DAS_Capture_The_Flag
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
                 endpoints.MapHub<GameHub>("/gamehub");
             });
         }

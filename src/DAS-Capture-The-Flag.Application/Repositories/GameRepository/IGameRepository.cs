@@ -11,8 +11,8 @@ namespace DAS_Capture_The_Flag.Application.Repositories.GameRepository
         public List<Game> Games { get; set; }
 
         Task<Game> GetGame(Guid gameId);
-        Task<Game> JoinOrCreateGame(Guid playerId);
-        Task<Game> AddPlayerToGame(Game game, Guid playerId);
+        Task<Game> JoinOrCreateGame(Player player);
+        Task<Game> AddPlayerToGame(Game game, Player player);
         Task<Game> UpdatePlayerReady(Guid gameId, Guid playerId);
     }
 
