@@ -1,0 +1,45 @@
+﻿@page "/"
+@inherits LobbyComponent
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+        <div id="player" class="player-container">
+            <p>@LobbyVM.Player.Details.UserName</p>
+        </div>
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+        <div id="opponent" class="player-container">
+            <h2 class="govuk-heading-m"> Opponent </h2>
+
+            @if (LobbyVM.Opponent.Id != Guid.Empty)
+            {
+                <p> @LobbyVM.Opponent.Details.UserName</p>
+            }
+            else
+            {
+                <div id="waiting-for-opponent-message">
+                    <p> Waiting for an opponent</p>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-inset-text" id="opponent-ready-message" hidden="@(!(LobbyVM.Player.Ready.Equals(true) && LobbyVM.Opponent.Ready.Equals(false)))">
+        Waiting for opponent
+    </div>
+    <div class="govuk-inset-text" id="opponent-ready-message" hidden="@(!(!LobbyVM.Opponent.Id.Equals(null) && LobbyVM.Opponent.Ready.Equals(true) && LobbyVM.Player.Ready.Equals(false)))">
+        Opponent is ready to start!
+    </div>
+    <div class="govuk-inset-text" id="opponent-ready-message" hidden="@(!(LobbyVM.Opponent.Ready.Equals(true) && LobbyVM.Player.Ready.Equals(true)))">
+        Starting game
+    </div>
+
+    <button class="govuk-button" id="start-button" @onclick="@(() => Ready())" disabled="@LobbyVM.PlayersConnected.Equals(false)"> Start Game </button>
+
+    <a class="das-button-link">Cancel</a>
+</div>
