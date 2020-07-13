@@ -1,10 +1,16 @@
 ﻿@page
 @model LogoutModel
 @{
-    ViewData["Title"] = "Log out";
+    ViewData["Title"] = "You have logged out";
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
-    <p>You have successfully logged out of the application.</p>
-</header>
+<div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-xl">@ViewData["Title"]</h1>
+
+            <a asp-controller="Home" asp-action="Index" class="govuk-button"> Continue </a>
+        </div>
+    </div>
+</div>

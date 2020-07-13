@@ -2,39 +2,47 @@
 @model RegisterModel
 @{
     ViewData["Title"] = "Create an account";
+    ViewBag.HideNav = true;
 }
+
+<a asp-controller="Home" asp-action="Index" class="govuk-back-link">Back</a>
 
 <div class="govuk-main-wrapper">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="heading-xlarge">@ViewData["Title"]</h1>
-            <div class="col-md-4">
-                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                    <h1 class="heading-large">Your Details</h1>
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    <div class="form-group">
-                        <label class="form-label" asp-for="Input.UserName"></label>
-                        <input asp-for="Input.UserName" class="form-control" />
-                        <span asp-validation-for="Input.UserName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" asp-for="Input.Email"></label>
-                        <input asp-for="Input.Email" class="form-control" />
-                        <span asp-validation-for="Input.Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" asp-for="Input.Password"></label>
-                        <input asp-for="Input.Password" class="form-control" />
-                        <span asp-validation-for="Input.Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" asp-for="Input.ConfirmPassword"></label>
-                        <input asp-for="Input.ConfirmPassword" class="form-control" />
-                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                    </div>
-                    <button type="submit" class="govuk-button">Register</button>
-                </form>
-            </div>
+
+            <partial name="_ErrorSummary" />
+
+            <h1 class="govuk-heading-xl">@ViewData["Title"]</h1>
+            
+            <p> If you already have an account <a asp-page="./Login"> sign in</a></p>
+
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                 
+                <div class="govuk-form-group" sfa-gds-error-class-for="UserName">
+                    <label class="form-label-bold" asp-for="UserName"></label>
+                    <span sfa-gds-error-message-for="UserName"></span>
+                    <input asp-for="UserName" class="govuk-input" />
+                </div>
+                <div class="govuk-form-group" sfa-gds-error-class-for="Email">
+                    <label class="form-label-bold" asp-for="Email"></label>
+                    <span class="govuk-hint"> We'll send you an email to confirm your identity.</span>
+                    <span sfa-gds-error-message-for="Email"></span>
+                    <input asp-for="Email" class="govuk-input" />
+                </div>
+                <div class="govuk-form-group" sfa-gds-error-class-for="Password">
+                    <label class="form-label-bold" asp-for="Password"></label>
+                    <span sfa-gds-error-message-for="Password" ></span>
+                    <input asp-for="Password" class="govuk-input" />
+                </div>
+                <div class="govuk-form-group" sfa-gds-error-class-for="ConfirmPassword">
+                    <label class="form-label-bold" asp-for="ConfirmPassword"></label>
+                    <span sfa-gds-error-message-for="ConfirmPassword"></span>
+                    <input asp-for="ConfirmPassword" class="govuk-input" />
+                </div>
+                <button type="submit" class="govuk-button">Create account</button>
+            </form>
+            
         </div>
     </div>
 </div>
