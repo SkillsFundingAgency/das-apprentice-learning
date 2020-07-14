@@ -26,6 +26,8 @@
     <Compile Remove="Data\Migrations\20200619145645_applicationUser.Designer.cs" />
     <Compile Remove="Data\Migrations\20200619151657_addApplicationUser.cs" />
     <Compile Remove="Data\Migrations\20200619151657_addApplicationUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200713085243_removeIdentityUserExtensionEntries.cs" />
+    <Compile Remove="Data\Migrations\20200713085243_removeIdentityUserExtensionEntries.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

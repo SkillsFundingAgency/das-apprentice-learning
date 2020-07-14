@@ -11,7 +11,6 @@ namespace DAS_Capture_The_Flag.Services
 {
     public class ForumService : IForumService
     {
-        // Pass an instant of our dbContext
         private readonly ApplicationDbContext _db;
 
         public ForumService(ApplicationDbContext db)
@@ -31,32 +30,23 @@ namespace DAS_Capture_The_Flag.Services
             _db.Forums.Remove(topic);
         }
 
-        public IEnumerable<Forum> GetAll() // returns instance of forum from our database
+        public IEnumerable<Forum> GetAll()
         {
             return _db.Forums.Include(f => f.Posts);
         }
 
-        //public IEnumerable<IdentityUser> GetAllActiveUsers()
         public IEnumerable<ApplicationUser> GetAllActiveUsers()
         {
             throw new NotImplementedException();
         }
 
+        // TODO: Paging Strategy see .Skip .Take methods
         public Forum GetById(int id)
         {
-            // Give the first forum that corresponds to where clause: primary key should return single result.
-            // Look for all forums
-            // Where clause using linq. Specify forum id is equals to the id we pass.
             var forum = _db.Forums.Where(f => f.Id == id)
-                // Include posts here too, loading the posts now too
-                // The posts have navigation properties too, such as the user, so ThenInclude
                 .Include(f => f.Posts).ThenInclude(p => p.User)
-                // Include posts here too, loading the posts again in order to get replies from those posts
-                // The posts have navigation properties too, such as the user, so ThenInclude
                 .Include(f => f.Posts).ThenInclude(p => p.Replies)
-                // Replies have a navigation of user who made a reply, so ThenInclude here
                 .ThenInclude(r => r.User)
-                // Return the first or default and then call return.
                 .FirstOrDefault();
             return forum;
         }

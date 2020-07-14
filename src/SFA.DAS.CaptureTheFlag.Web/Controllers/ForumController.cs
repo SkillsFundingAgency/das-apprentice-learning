@@ -40,6 +40,7 @@ namespace DAS_Capture_The_Flag.Controllers
         public IActionResult Topic(int id)
         {
             var forum = _forumService.GetById(id);
+            
             var posts = forum.Posts;
 
             var postListings = posts.Select(post => new PostListingModel
