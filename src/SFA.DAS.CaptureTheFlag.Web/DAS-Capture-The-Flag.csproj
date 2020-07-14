@@ -14,20 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Migrations\20200601082533_removeUnusedColumns.cs" />
-    <Compile Remove="Data\Migrations\20200601082533_removeUnusedColumns.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200604105242_UpdateApplicationUser.cs" />
-    <Compile Remove="Data\Migrations\20200604105242_UpdateApplicationUser.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200604122212_UpdateApplicationUser.cs" />
-    <Compile Remove="Data\Migrations\20200604122212_UpdateApplicationUser.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200619125133_ApplicationUser.cs" />
-    <Compile Remove="Data\Migrations\20200619125133_ApplicationUser.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200619145645_applicationUser.cs" />
-    <Compile Remove="Data\Migrations\20200619145645_applicationUser.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200619151657_addApplicationUser.cs" />
-    <Compile Remove="Data\Migrations\20200619151657_addApplicationUser.Designer.cs" />
-    <Compile Remove="Data\Migrations\20200713085243_removeIdentityUserExtensionEntries.cs" />
-    <Compile Remove="Data\Migrations\20200713085243_removeIdentityUserExtensionEntries.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200714131105_Initia.cs" />
+    <Compile Remove="Data\Migrations\20200714131105_Initia.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
