@@ -1,0 +1,14 @@
+﻿@model DAS_Capture_The_Flag.Web.Models.Lobby.LobbyViewModel;
+@using DAS_Capture_The_Flag.Components.Lobby;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<a class="govuk-back-link" asp-action="Index" asp-controller="Home">Back</a>
+
+<h1 class="govuk-heading-xl">Finding game</h1>
+
+@(await Html.RenderComponentAsync<Lobby>(RenderMode.ServerPrerendered, new { GameId = Model.Id, PlayerId = Model.PlayerId }))
+
+<script src="_framework/blazor.server.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>

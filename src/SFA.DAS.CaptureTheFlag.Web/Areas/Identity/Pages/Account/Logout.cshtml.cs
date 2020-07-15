@@ -28,15 +28,15 @@ namespace DAS_Capture_The_Flag.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             await _signInManager.SignOutAsync();
+
             _logger.LogInformation("User logged out.");
+
             if (!string.IsNullOrEmpty(returnUrl))
             {
                 return LocalRedirect(returnUrl);
             }
-            else
-            {
-                return RedirectToPage();
-            }
+           
+            return RedirectToPage();
         }
     }
 }

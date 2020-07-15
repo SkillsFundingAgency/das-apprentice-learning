@@ -2,8 +2,11 @@
 @using Microsoft.AspNetCore.Identity
 @*@inject SignInManager<IdentityUser> SignInManager*@
 @inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Home Page";
+
+    var user = await UserManager.GetUserAsync(User); 
 }
 
 <div class="govuk-main-wrapper">
@@ -13,17 +16,13 @@
 
             @if (SignInManager.IsSignedIn(User))
             {
-                <form action="/Game/FindGame" method="get">
-                    <button class="govuk-button" type="submit">Find a new game</button>
-                </form>
+                <a class="govuk-button" asp-controller="Lobby" asp-action="Index" asp-route-playerId="@user.Id">> Find a new game</a>
             }
             else
             {
                 <p>
-                    <a asp-area="Identity" asp-page="/Account/Login"
-                       id="loginLink" title="Sign in"><i class="fa fa-sign-in"></i>Log in </a> or
-                    <a asp-area="Identity" asp-page="/Account/Register"
-                       id="registerLink" title="Create account"><i class="fa fa-sign-in"></i>Register</a> to start a new game.
+                    <a asp-area="Identity" asp-page="/Account/Login" id="loginLink" title="Sign in">Sign in </a> or <a asp-area="Identity" asp-page="/Account/Register"
+                       id="registerLink" title="Create account"> create an account </a> to start playing Capture The Flag.
                 </p>
             }
 
@@ -36,16 +35,19 @@
             </h2>
             <nav role="navigation" aria-labelledby="subsection-title">
                 <ul class="govuk-list govuk-!-font-size-16">
-                    <li>
-                        <a class="govuk-link" asp-area="Identity" asp-page="/Account/Manage/Index">
-                            Account settings
-                        </a>
-                    </li>
-                    <li>
-                        <a class="govuk-link" href="#">
-                            Game Settings
-                        </a>
-                    </li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li>
+                            <a class="govuk-link" asp-area="Identity" asp-page="/Account/Manage/Index">
+                                Account settings
+                            </a>
+                        </li>
+                        <li>
+                            <a class="govuk-link" href="#">
+                                Game Settings
+                            </a>
+                        </li>
+                    }
                     <li>
                         <a class="govuk-link" asp-action="Index" asp-controller="Forum">
                             Forums
