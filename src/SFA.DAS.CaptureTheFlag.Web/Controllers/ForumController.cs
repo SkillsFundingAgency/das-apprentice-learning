@@ -4,11 +4,9 @@ using System.Linq;
 using DAS_Capture_The_Flag.Models.Forum;
 using DAS_Capture_The_Flag.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace DAS_Capture_The_Flag.Controllers
 {
-    // Inject an instance of our ForumService from forum layer into the constructor
     public class ForumController : Controller
     {
         private readonly IForumService _forumService;
@@ -40,14 +38,13 @@ namespace DAS_Capture_The_Flag.Controllers
         public IActionResult Topic(int id)
         {
             var forum = _forumService.GetById(id);
-            
             var posts = forum.Posts;
 
             var postListings = posts.Select(post => new PostListingModel
             {
                 Id = post.Id,
                 AuthorId = post.User.Id,
-                //AuthorRating = post.User.Rating,
+                AuthorRating = post.User.Rating,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count(),
@@ -60,7 +57,7 @@ namespace DAS_Capture_The_Flag.Controllers
                 Forum = BuildForumListing(forum)
             };
 
-            return View();
+            return View(model);
         }
 
         private ForumListingModel BuildForumListing(Post post)

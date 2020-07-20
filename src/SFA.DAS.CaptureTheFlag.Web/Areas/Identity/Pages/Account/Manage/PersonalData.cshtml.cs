@@ -9,12 +9,10 @@ namespace DAS_Capture_The_Flag.Areas.Identity.Pages.Account.Manage
 {
     public class PersonalDataModel : PageModel
     {
-        //private readonly UserManager<IdentityUser> _userManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<PersonalDataModel> _logger;
 
         public PersonalDataModel(
-            //UserManager<IdentityUser> userManager,
             UserManager<ApplicationUser> userManager,
             ILogger<PersonalDataModel> logger)
         {

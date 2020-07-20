@@ -1,5 +1,4 @@
-﻿using DAS_Capture_The_Flag.Models;
-using DAS_Capture_The_Flag.Models.Forum;
+﻿using DAS_Capture_The_Flag.Models.Forum;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

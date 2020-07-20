@@ -11,7 +11,6 @@ namespace DAS_Capture_The_Flag.Services
     {
         Forum GetById(int id);
         IEnumerable<Forum> GetAll();
-        //IEnumerable<IdentityUser> GetAllActiveUsers();
         IEnumerable<ApplicationUser> GetAllActiveUsers();
 
         void Create(Forum forum);

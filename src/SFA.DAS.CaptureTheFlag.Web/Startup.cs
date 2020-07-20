@@ -1,7 +1,4 @@
-using System;
-using DAS_Capture_The_Flag.Areas.Identity;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,10 +33,6 @@ namespace DAS_Capture_The_Flag
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("GameDbConnection")));
-
-            //services.AddDefaultIdentity<IdentityUser>(
-            //        options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddDefaultIdentity<ApplicationUser>(
                     options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();

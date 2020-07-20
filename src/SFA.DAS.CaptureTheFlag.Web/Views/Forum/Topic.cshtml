@@ -1,0 +1,55 @@
+﻿@model DAS_Capture_The_Flag.Models.Forum.ForumTopicModel
+
+<div class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+        <h1 class="govuk-heading-xl">Forum</h1>
+        <h2 class="govuk-heading-m">Welcome to the @Model.Forum.Name Forum</h2>
+        <p></p>
+        <a class="govuk-link" asp-action="Index" asp-controller="Home">
+            <h1 class="govuk-heading-s">Return to Capture the Flag</h1>
+        </a>
+        <p></p>
+        <p></p>
+
+        @if (Model.Posts.Any())
+        {
+            <table>
+                <tbody>
+                    @foreach (var post in Model.Posts)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id"></a>
+                                @post.Title
+                            </td>
+                            <td>
+                                @post.AuthorName
+                            </td>
+                            <td>
+                                @post.DatePosted
+                            </td>
+                            <td>
+                                @post.RepliesCount
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+        else
+        {
+            <div class="noPosts">
+                <h3>
+                    It looks like there are currently no @Model.Forum.Name  posts yet. <br />
+                    Why not
+                    <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id">
+                        <span>create</span>
+                    </a>
+                    one?
+                </h3>
+            </div>
+        }
+    </div>
+</div>
+

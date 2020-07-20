@@ -11,5 +11,6 @@ namespace DAS_Capture_The_Flag.Data
         public string ProfileImageUrl { get; set; }
         [PersonalData]
         public DateTime MemberSince { get; set; }
+
     }
 }
